@@ -1,0 +1,47 @@
+header {
+    background-color: #0D1B2A;
+    color : #CC6600;
+    display: flex;
+    align-items: center;
+}
+
+
+body{
+    margin:0;
+    padding:0;
+
+}
+
+.orange_background{
+    background-color: #CC6600;
+    color: #000000 ;
+}
+
+.black_background{
+    background-color: black;
+    color: #CC6600;
+}
+
+img.onscroll{
+    display: flex;
+}
+
+form.barre_de_recherche{
+    height: auto;
+    position: absolute;
+    left: 50%;
+    display: block;
+}
+
+button{
+    border: 1px outset black;
+}
+
+form.filtre{
+    position: absolute;
+    left: 47%;
+}
+header img{
+    position: absolute;
+    left: 97%;
+}
