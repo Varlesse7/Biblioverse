@@ -1,15 +1,82 @@
+* {
+    margin: 0;
+    font-family: Georgia, Serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    text-align: justify;
+}
+
 header {
     background-color: #0D1B2A;
     color : #CC6600;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+div.icon{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header p{
     display: flex;
     align-items: center;
 }
 
+div.seach-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button{
+    border: 1px outset black;
+}
+
+article{
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+div.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.book-container {
+    display: flex;
+}
+article img{
+    padding-left: 4%;
+}
+
+.book-container > div {
+    display: flex;
+    flex-direction: column;
+}
+div span {
+    margin-bottom: 3%;
+}
 
 body{
-    margin:0;
-    padding:0;
+    color : #CC6600;
+}
 
+
+img.seconde_Suggestion{
+    position: absolute;
+    left: 50%;
 }
 
 .orange_background{
@@ -21,27 +88,17 @@ body{
     background-color: black;
     color: #CC6600;
 }
+strong{
+    margin-right: 100%;
+}
+.Livre{
+    margin-bottom: 2%;
+}
 
 img.onscroll{
     display: flex;
 }
 
-form.barre_de_recherche{
-    height: auto;
-    position: absolute;
-    left: 50%;
-    display: block;
-}
 
-button{
-    border: 1px outset black;
-}
 
-form.filtre{
-    position: absolute;
-    left: 47%;
-}
-header img{
-    position: absolute;
-    left: 97%;
-}
+
