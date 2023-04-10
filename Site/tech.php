@@ -10,6 +10,7 @@ require("include/header.inc.php");
     <?php
     $nasa = file_get_contents("https://api.nasa.gov/planetary/apod?api_key=Pjqxo5xGM1Hr1BvyPIQLyJNh8gJcoua1kWzvxwZr");
     $tableau = json_decode($nasa, true);
+    echo('<div class="orange_background">');
     echo('<h1>Premiere partie de notre projet Web</h1>');
     echo('<p>Image du jour de la nasa</p>');
     if ($tableau['media_type'] =="image"){
@@ -21,6 +22,8 @@ require("include/header.inc.php");
     echo('<p>Phrase du jour de la nasa</p>');
     echo('<p>'.$tableau['explanation'].'</p>');
 
+    echo ('</div>');
+    echo ('<div class="black_background">');
     echo('<p>Voici les informations lier a votre IP dependant de la manière dont on la traite</p>');
     echo('<p>1ere méthode :(xml)</p>');
 
@@ -75,6 +78,7 @@ require("include/header.inc.php");
 
     echo("<p>Position : ".$city3[0].','.$country3[0].','.$region3[0]."</p>");
 
+    echo ('</div>')
 
     ?>
 
