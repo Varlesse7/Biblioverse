@@ -28,8 +28,7 @@ require("include/function.php");
         <div class='spacing'>
             <h1>Résultat(s) de la recherche:</h1>
             <?php
-            $array = search();
-            echo($array[1]);
+            echo (book($_GET['isbn']));
 
             ?>
         </div>
