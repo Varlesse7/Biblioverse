@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2508655a-f0dd-4961-9509-5d58dd2b6692" name="franck-papuchon.alwaysdata.net" url="https://franck-papuchon.alwaysdata.net">
+        <fileTransfer rootFolder="/home/franck-papuchon" accessType="SFTP" host="ssh-franck-papuchon.alwaysdata.net" port="22" sshConfigId="ceb456fc-c4fc-4acb-b3bb-d9bf29d694ae" sshConfig="franck-papuchon@ssh-franck-papuchon.alwaysdata.net:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
