@@ -1,55 +1,51 @@
 <?php
-
 function search()
 {
-    global $item_count;
+    global $docs_count;
+	$url = "https://openlibrary.org/search.json?";
     if (isset($_GET['search'])) {
         $search = $_GET['search'];
-        $type = $_GET['type'] ?? '';
-
-        $url = "https://www.googleapis.com/books/v1/volumes?q=";
-
+		$url.="q=".urlencode($search);
+	}
+    if(isset($_GET['type'])){
+		$type = $_GET['type'];
         if ($type == 'author') {
-            $url .= "inauthor:" . urlencode($search);
-        } else {
-            $url .= "intitle:" . urlencode($search);
+            $url .= "&author=". urlencode($search)."&sort=new";
         }
-        if (isset($_GET['page'])) {
-            $url .= '&startIndex=' . $_GET['page'] . '&maxResults=30&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E';
-        } else {
-            $url .= '&startIndex=0&printType=books&maxResults=30&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E';
-
+		if($type=="title") {
+            $url .= "&title=" . urlencode($search);
         }
+	}
+	if(isset($_GET['genre']) && !empty($_GET['genre'])) {
+		$genre = $_GET['genre'];
+		$url .="&subject=".urlencode($genre);
+		}
+		echo $url;
         $json = file_get_contents($url);
 
         $data = json_decode($json, true);
 
 
-        if (isset($data['items'])) {
+        if (isset($data['docs'])) {
             $book = "\t\t\t" . '<div class="container">' . "\n";
-            foreach ($data['items'] as $item) {
-                $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
+            foreach ($data['docs'] as $docs) {
+                $isbn = $docs['isbn']?? '';
 
-                $title = $item['volumeInfo']['title'] ?? '';
-
-                $authors = isset($item['volumeInfo']['authors'])
-                    ? implode(", ", $item['volumeInfo']['authors'])
+                $title = $docs['title'] ?? '';
+                $authors = isset($docs['author_name'])
+                    ? implode(", ", $docs['author_name'])
                     : '';
-                $publisher = $item['volumeInfo']['publisher'] ?? '';
-
-                $publishedDate = $item['volumeInfo']['publishedDate'] ?? '';
-
-                $pageCount = $item['volumeInfo']['pageCount'] ?? '';
-
-                $description = $item['volumeInfo']['description'] ?? '';
-                if ($thumbnail) {
-
+                $description = $docs['volumeInfo']['description'] ?? '';
+                if ($isbn) {
+					$isbn = $isbn[0];
+					$thumbnail="https://covers.openlibrary.org/b/isbn/".$isbn."-M.jpg";
                     $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
                     $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
-
+					
                     $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
                     $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
                     $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+                    $book .= "\t\t\t\t\t" . "<span>" . $thumbnail . "</span>" . "\n";
                     $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
@@ -69,13 +65,12 @@ function search()
                     $book .= "\t\t\t\t" . "</div>" . "\n";
                 }
             }
-            return array($data['totalItems'], $book);
+            return $book;
         } else {
             return "Aucun livre trouvé.";
         }
     }
-    return null;
 
-}
+
 
 ?>

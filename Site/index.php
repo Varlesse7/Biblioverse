@@ -1,11 +1,11 @@
+
 <?php
 
 $title = "Biblioverse";
 $description = "Vous pouvez rentrer dans le monde des livres";
 $currentPage = "index";
 
-require("include/header.inc.php")
-
+require("include/header.inc.php");
 ?>
 <main>
     <section class="black_background">

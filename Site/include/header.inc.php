@@ -18,21 +18,30 @@
 <header>
     <p>Profil</p>
     <div class="seach-bar">
-        <form class="filtre" method="get" action="index.php">
-            <button>Filtre</button>
-        </form>
         <form method="GET" action="recherche.php">
-            <label for="search">Recherche de livres:</label>
-            <input type="text" name="search" id="search" required>
-            <br>
-            <input type="radio" id="title" name="searchby" value="title" checked>
-            <label for="title">Recherche par titre</label>
-            <br>
-            <input type="radio" id="author" name="searchby" value="author">
-            <label for="author">Recherche par auteur</label>
-            <br>
-            <button type="submit">Rechercher</button>
-        </form>
+		<label for="search">Recherche de livres:</label>
+		<input type="text" name="search" id="search">
+		<br>
+		<input type="radio" id="title" name="searchby" value="title">
+		<label for="title">Recherche par titre</label>
+		<br>
+		<input type="radio" id="author" name="searchby" value="author">
+		<label for="author">Recherche par auteur</label>
+		<br>
+		<center><label for="genre">Genre :</label>
+		<select name="genre" id="genre">
+			<option value="">-- Sélectionnez un genre --</option>
+			<option value="tennis rules">Règles sur Le Tenis (Test)</option>
+			<option value="scifi">Science fiction</option>
+			<option value="Fantastique">Fantastique</option>
+			<option value="horror">Horreur</option>
+			<option value="fantasy">Fantasy</option>
+		</select></center>
+		<br>
+		<center><button type="submit">Rechercher</button></center>
+	</form>
+
+
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $filter = $_POST['filter'];

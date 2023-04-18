@@ -1,4 +1,17 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+        $searchby = 'genre';
+        $search = $_GET['genre'];
+    } elseif (isset($_GET['searchby']) && isset($_GET['search']) && !empty($_GET['search'])) {
+        $searchby = $_GET['searchby'];
+        $search = $_GET['search'];
+    }
+}
+
+?>
+
+<?php
 
 $title = "Biblioverse";
 $description = "Vous pouvez rentrer dans le monde des livres";
@@ -13,9 +26,7 @@ require("include/function.php");
         <div class='spacing'>
             <h1>Résultat(s) de la recherche:</h1>
             <?php
-            $array = search();
-            $i =0;
-            echo($array[1]);
+            echo search();
             ?>
         </div>
     </section>
