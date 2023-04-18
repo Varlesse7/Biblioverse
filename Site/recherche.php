@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } elseif (isset($_GET['searchby']) && isset($_GET['search']) && !empty($_GET['search'])) {
         $searchby = $_GET['searchby'];
         $search = $_GET['search'];
+    } else {
+        // Si aucun critère de recherche n'est spécifié, vous pouvez afficher un message d'erreur ou rediriger l'utilisateur vers la page de recherche.
     }
 }
 
