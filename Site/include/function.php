@@ -1,7 +1,6 @@
 <?php
 function search()
 {
-    global $docs_count;
     $url = "https://openlibrary.org/search.json?";
     if (isset($_GET['search'])) {
         $search = $_GET['search'];
@@ -45,7 +44,6 @@ function search()
                 $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
                 $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
                 $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
-                $book .= "\t\t\t\t\t" . "<span>" . $thumbnail . "</span>" . "\n";
                 $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
@@ -76,42 +74,66 @@ function book($isbn)
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
     $info = file_get_contents($json);
     $info = json_decode($info, true);
-    $item = $info['items']['0'];
 
-    $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
-    $title = $item['volumeInfo']['title'] ?? '';
-    $authors = $item['volumeInfo']['authors']['0'] ?? '';
-    $description = $item['volumeInfo']['description'] ?? '';
-    if ($thumbnail) {
+    if ($info['totalItems'] <= 0) {
+        $item = $info['items']['0'];
 
-        $book = "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+        $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
+        $title = $item['volumeInfo']['title'] ?? '';
+        $authors = $item['volumeInfo']['authors']['0'] ?? '';
+        $description = $item['volumeInfo']['description'] ?? '';
+        if ($thumbnail) {
 
-        $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
-        $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+            $book = "\t\t\t\t" . '<div class="book-container">' . "\n";
+            $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
 
-        $book .= "\t\t\t\t" . "</div>" . "\n";
+            $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
+            $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
+            $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+            $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+
+            $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
+        } else {
+            $book = "\t\t\t\t" . '<div class="book-container">' . "\n";
+            $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+
+            $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
+            $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
+            $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+            $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
-    } else {
-        $book = "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+        }
 
-        $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
-        $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
-        $book .= "\t\t\t\t" . "</div>" . "\n";
+    }else {
+        $json = "https://openlibrary.org/search.json?q=isbn:" . $isbn;
+        $info = file_get_contents($json);
+        $info = json_decode($info, true);
+        $item = $info['docs']['0'];
 
+            $title = $item['title'] ?? '';
+            $authors = isset($item['author_name'])
+                ? implode(", ", $item['author_name'])
+                : '';
+            $description = $item['volumeInfo']['description'] ?? '';
+
+            $thumbnail = "https://covers.openlibrary.org/b/isbn/" . $isbn . "-M.jpg";
+            $book = "\t\t\t\t" . '<div class="book-container">' . "\n";
+            $book .= "\t\t\t\t" . '<a href="test.php?isbn=' . $isbn . '">' . "<img src='" . $thumbnail . "'/></a>" . "\n";
+
+            $book .= "\t\t\t\t" . "<div class='information_book'>" . "\n";
+            $book .= "\t\t\t\t\t" . "<strong>" . $title . "</strong>" . "\n";
+            $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+            $book .= "\t\t\t\t" . "</div>" . "\n";
+
+
+            $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
     }
-
     return $book;
-
 
 }
 

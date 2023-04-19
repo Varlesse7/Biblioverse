@@ -12,6 +12,11 @@ a:hover{
     color: #FF8409;
 }
 
+main{
+    background-color: #FFB56A;
+
+}
+
 body{
     min-height: 100vh;
     display: grid;
