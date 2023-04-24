@@ -11,10 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-?>
-
-<?php
-
 $title = "Biblioverse";
 $description = "Vous pouvez rentrer dans le monde des livres";
 $currentPage = "recherche";
@@ -27,9 +23,18 @@ require("include/function.php");
     <section class="black_background">
         <div class='spacing'>
             <h1>Résultat(s) de la recherche:</h1>
-            <?php
-            $array = search();
-            echo($array[1]);
+            <?
+            $array = search_google();
+            echo($array[0]);
+            $form = '<form method="get" action = "recherche.php">';
+            $form .='<input type="hidden" name="page_count" value ="'.$array[1].'" />';
+            for ($i = 0; $i < $array[1]; $i++){
+                $form .= "<label>";
+                $form .='<input type="submit" name="page" value ="'.($i+1).'" />';
+                $form .= "</label>";
+            }
+            $form .='</form>';
+            echo($form);
 
             ?>
         </div>
