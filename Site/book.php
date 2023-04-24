@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+/*if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['genre']) && !empty($_GET['genre'])) {
         $searchby = 'genre';
         $search = $_GET['genre'];
@@ -7,10 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $searchby = $_GET['searchby'];
         $search = $_GET['search'];
     } else {
-        // Si aucun critère de recherche n'est spécifié, vous pouvez afficher un message d'erreur ou rediriger l'utilisateur vers la page de recherche.
     }
 }
-
+*/
 ?>
 
 <?php
@@ -24,6 +23,8 @@ require("include/function.php");
 
 ?>
 <main>
+	<button onclick="history.back()">Retour temporaire</button>
+
     <section class="black_background">
         <div class='spacing'>
             <?php

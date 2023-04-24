@@ -19,9 +19,7 @@ require("include/header.inc.php");
                         <span>Albert Camus</span>
                         <span><strong>Avis le plus aimé :</strong>
 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut nulla nec dolor placerat tempus a
-                            vitae nisi. In laoreet at lorem eget iaculis. Proin fringilla elit nec sapien laoreet, a pretium sem
-                            elementum. Quisque vitae congue odio. Vivamus congue massa </span>
+                             L'Etranger " d'Albert Camus est un roman existentiel qui raconte l'histoire de Meursault, un homme indifférent à la vie qui est accusé d'avoir tué un Arabe. Le livre explore les thèmes de l'absurdité de la vie, de la mort et de la justice. À travers le personnage de Meursault, Camus expose les conséquences de l'aliénation et de la solitude dans un monde qui manque de sens. </span>
                     </div>
                 </div>
                 <div class="book-container">
@@ -31,9 +29,7 @@ require("include/header.inc.php");
                         <span>Agatha Christie</span>
                         <span><strong>Avis le plus aimé :</strong>
 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut nulla nec dolor placerat tempus a
-                            vitae nisi. In laoreet at lorem eget iaculis. Proin fringilla elit nec sapien laoreet, a pretium sem
-                            elementum. Quisque vitae congue odio. Vivamus congue massa </span>
+                            Le roman "Le Crime de l'Orient-Express" d'Agatha Christie suit le célèbre détective Hercule Poirot alors qu'il enquête sur le meurtre d'un passager à bord de l'Orient-Express, un luxueux train de voyageurs. Avec un groupe hétéroclite de suspects, chacun ayant un alibi apparemment étanche, Poirot doit démêler les mensonges et les secrets pour trouver le coupable avant qu'il ne frappe à nouveau. Le livre est un classique du genre policier, connu pour son intrigue astucieuse et sa fin surprenante. </span>
                     </div>
                 </div>
             </div>

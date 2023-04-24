@@ -3,11 +3,11 @@ function search_google(): array
 {
     $page_count = 0;
     $i = 0;
-    if (empty($_POST['API']) && isset($_GET['search'])) {
-
-
-        while ($i < 5) {
-            $url = "https://www.googleapis.com/books/v1/volumes?q=" . urlencode($_GET['search']) . "&max_results=20&startIndex=" . $i * 20;
+    if (empty($_POST['API'])){
+	if (isset($_GET['autheur']) && isset($_GET['search'])){
+	while ($i < 5) {
+            $url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:". urlencode($_GET['search']) . "&max_results=20&startIndex=" . $i * 20 ."&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E";
+			//echo $url;
             $json = file_get_contents($url);
 
             $items = json_decode($json, true);
@@ -20,7 +20,63 @@ function search_google(): array
             }
         }
         $_POST['API'] = urlencode($_GET['search']);
+	} 
+	elseif (!empty($_GET['search'])) {
+    while ($i < 5) {
+        $url = "https://www.googleapis.com/books/v1/volumes?q=" . urlencode($_GET['search']) . "&max_results=20&startIndex=" . $i * 20 ."&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E";
+        $json = file_get_contents($url);
+        $items = json_decode($json, true);
+        if (isset($items['items'])) {
+            file_put_contents("page" . $i . ".json", $json);
+            $i++;
+            $page_count++;
+        } else {
+            $i = 5;
+        }
     }
+    $_POST['API'] = urlencode($_GET['search']);
+}
+
+	elseif (isset($_GET['genre']) && empty($_GET['search'])) {
+
+        while ($i < 5) {
+            $url = "https://www.googleapis.com/books/v1/volumes?q=subject:" . urlencode($_GET['genre']) . "&max_results=20&startIndex=" . $i * 20 . "&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E";
+			//echo $url;
+            $json = file_get_contents($url);
+
+            $items = json_decode($json, true);
+            if (isset($items['items'])) {
+                file_put_contents("page" . $i . ".json", $json);
+                $i++;
+                $page_count++;
+            } else {
+                $i = 5;
+            }
+        }
+        $_POST['API'] = urlencode($_GET['genre']);
+    }
+	elseif (isset($_GET['genre']) && !empty($_GET['search'])) {
+
+        while ($i < 5) {
+            $url = "https://www.googleapis.com/books/v1/volumes?q=intitle:". urlencode($_GET['search'])."+genre:".urlencode($_GET['genre'])."&max_results=20&startIndex=" . $i * 20 . "&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E";
+			//echo $url;
+            $json = file_get_contents($url);
+
+            $items = json_decode($json, true);
+            if (isset($items['items'])) {
+                file_put_contents("page" . $i . ".json", $json);
+                $i++;
+                $page_count++;
+            } else {
+                $i = 5;
+            }
+        }
+        $_POST['API'] = urlencode($_GET['genre']);
+    }
+	
+	}
+	
+	
     if (isset($_GET['page_count'])) {
         $page_count = $_GET['page_count'];
     }
