@@ -26,7 +26,6 @@ require("include/function.php");
 <main>
     <section class="black_background">
         <div class='spacing'>
-            <h1>Résultat(s) de la recherche:</h1>
             <?php
             echo (book($_GET['isbn']));
 
