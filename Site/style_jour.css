@@ -148,6 +148,14 @@ strong{
 }
 .solo_book_container{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    /*grid-template-rows: 1fr 1fr 1fr;*/
 
 }
+.slick-slide {
+  height: 300px;
+}
+.bers {
+  font-family: "Baskerville", serif;
+}
+
+

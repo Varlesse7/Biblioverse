@@ -29,6 +29,12 @@ require("include/function.php");
             <?
 			if(isset($_GET['search'])){
 			$_SESSION['search'] = $_GET['search'];
+			$search = $_GET['search'];
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$filename = 'historique/' . $ip . '.txt';
+			$file = fopen($filename, 'a');
+			fwrite($file, date('Y-m-d H:i:s') . ' - ' . $search ."\n");
+			fclose($file);
 			}
 			if(isset($_GET['genre'])){
 			$_SESSION['genre'] = $_GET['genre'];
@@ -38,6 +44,7 @@ require("include/function.php");
 			} else {
 				$_SESSION['autheur'] = false;
 			}
+
 
             $array = search_google();
             echo($array[0]);
