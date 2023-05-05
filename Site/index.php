@@ -18,9 +18,7 @@ require("include/header.inc.php");
       
                     <div>
 
-                        <span><?php if (isset($_COOKIE['style'])){
-                                echo ($_COOKIE['style']);
-                            }?>L'Etranger</span>
+                        <span>L'Etranger</span>
                         <span>Albert Camus</span>
                         <span><strong>Avis le plus aimé :</strong>
 
