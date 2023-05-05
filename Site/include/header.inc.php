@@ -33,16 +33,21 @@
     <a href="profil.php">Profil</a>
     <?php
     session_start();
-    $search = isset($_SESSION['search']) ? $_SESSION['search'] : '';
+
     $genre = isset($_SESSION['genre']) ? $_SESSION['genre'] : '';
-    $autheur = isset($_SESSION['autheur']) && $_SESSION['autheur'] ? 'checked' : '';
     ?>
 
     <div class="seach-bar">
         <form method="GET" action="recherche.php">
             <input type="text" name="search" id="search" placeholder="Un mot-clé, un titre ou un auteur"
-                   style="width: 250px;border: 1px solid #ccc;" value="<?php echo $search; ?>">
-            <input type="checkbox" name="autheur" value="autheur" <?php echo $autheur; ?>> Autheur</center>
+                   style="width: 250px;border: 1px solid #ccc;" value="<?php
+            if (isset($_GET['search'])){
+                echo($_GET['search']);
+            }?>">
+            <input type="checkbox" name="autheur" value="autheur" <?php
+            if (isset($_GET['autheur'])){
+                echo($_GET['search']);
+            }?>> Autheur</center>
 
             <label for="genre">Genre :</label>
             <select name="genre" id="genre">
@@ -130,8 +135,8 @@
         $argument = "";
         if (!empty($args)) {
             foreach ($args as $arg => $valeur) {
-                print_r(" a=" . $arg);
-                print_r(" v=" . $valeur);
+                /*print_r(" a=" . $arg);
+                print_r(" v=" . $valeur);*/
 
 
                 if ($arg != "style") {
