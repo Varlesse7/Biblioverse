@@ -14,25 +14,29 @@
     <link href="style_<?php
     if (isset($_GET['style'])) {
         echo($_GET['style']);
-    }else if (isset($_COOKIE['style'])) {
+    } else if (isset($_COOKIE['style'])) {
         echo($_COOKIE['style']);
     } else {
         echo('nuit');
     }
     ?>.css" rel="stylesheet"/>
     <link rel="icon" href="./images/petit_Icon.ico" type="image/icon"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+          integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+          integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
 <body>
 <header>
     <a href="profil.php">Profil</a>
-	<?php
-	session_start();
-	$search = isset($_SESSION['search']) ? $_SESSION['search'] : '';
-	$genre = isset($_SESSION['genre']) ? $_SESSION['genre'] : '';
-	$autheur = isset($_SESSION['autheur']) && $_SESSION['autheur'] ? 'checked' : '';
-	?>
+    <?php
+    session_start();
+    $search = isset($_SESSION['search']) ? $_SESSION['search'] : '';
+    $genre = isset($_SESSION['genre']) ? $_SESSION['genre'] : '';
+    $autheur = isset($_SESSION['autheur']) && $_SESSION['autheur'] ? 'checked' : '';
+    ?>
 
     <div class="seach-bar">
         <form method="GET" action="recherche.php">
@@ -122,15 +126,36 @@
     </div>
     <div class="end-header">
         <?php
+        parse_str($_SERVER['QUERY_STRING'], $args);
+        $argument = "";
+        if (!empty($args)) {
+            foreach ($args as $arg => $valeur) {
+                print_r(" a=" . $arg);
+                print_r(" v=" . $valeur);
+
+
+                if ($arg != "style") {
+                    $argument .= "&" . $arg . "=" . $valeur;
+                }
+            }
+        }
+
         if (isset($_GET['style']) && $_GET['style'] == "nuit") {
+
             setcookie('style', 'nuit', time() + 3600);
-            $a = '<a href="' . $currentPage . '.php?style=jour">Mode jour</a>';
+
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+
         } else if (isset($_GET['style'])) {
             setcookie('style', 'jour', time() + 3600);
-            $a = '<a href="' . $currentPage . '.php?style=nuit">Mode nuit</a>';
+
+            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+
         } else {
             setcookie('style', 'nuit', time() + 3600);
-            $a = '<a href="' . $currentPage . '.php?style=jour">Mode jour</a>';
+
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+
         }
         echo($a);
         ?>
