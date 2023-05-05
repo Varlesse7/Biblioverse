@@ -15,6 +15,7 @@
     if (isset($_GET['style'])) {
         echo($_GET['style']);
     } else if (isset($_COOKIE['style'])) {
+        setcookie('style', $_COOKIE['style'], time() + 3600);
         echo($_COOKIE['style']);
     } else {
         echo('nuit');
@@ -41,13 +42,13 @@
         <form method="GET" action="recherche.php">
             <input type="text" name="search" id="search" placeholder="Un mot-clé, un titre ou un auteur"
                    style="width: 250px;border: 1px solid #ccc;" value="<?php
-            if (isset($_GET['search'])){
+            if (isset($_GET['search'])) {
                 echo($_GET['search']);
-            }?>">
+            } ?>">
             <input type="checkbox" name="autheur" value="autheur" <?php
-            if (isset($_GET['autheur'])){
+            if (isset($_GET['autheur'])) {
                 echo($_GET['search']);
-            }?>> Autheur</center>
+            } ?>> Autheur</center>
 
             <label for="genre">Genre :</label>
             <select name="genre" id="genre">
@@ -156,8 +157,19 @@
 
             $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
-        } else {
+        } else if (isset($_COOKIE['style']) && $_COOKIE['style'] == 'nuit') {
+
             setcookie('style', 'nuit', time() + 3600);
+
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+
+        } else if (isset($_COOKIE['style'])){
+
+            setcookie('style', 'jour', time() + 3600);
+
+            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+
+        } else{
 
             $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
