@@ -101,6 +101,7 @@ $visites++;
 rewind($file);
 $newData = "$date|$visites\n";
 $found = false;
+$newFile = "";
 while (!feof($file)) {
     $line = fgets($file);
     $data = explode("|", $line);
