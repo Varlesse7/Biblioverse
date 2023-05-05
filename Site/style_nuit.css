@@ -71,8 +71,8 @@ strong{
 }
 
 .black_background{
-    background-color: #31263E;
-    color: #FFF8F0;
+    background-color: black;
+    color: #FFB56A;
 
 }
 
@@ -130,7 +130,7 @@ strong{
 
 
 .orange_background{
-    background-color: #cccccc;
+    background-color: #FFB56A;
     color: black ;
     width: 100vw;
 }
@@ -148,14 +148,6 @@ strong{
 }
 .solo_book_container{
     display: grid;
-    /*grid-template-rows: 1fr 1fr 1fr;*/
+    grid-template-rows: 1fr 1fr 1fr;
 
 }
-.slick-slide {
-  height: 300px;
-}
-.bers {
-  font-family: "Baskerville", serif;
-}
-
-

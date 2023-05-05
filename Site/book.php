@@ -10,13 +10,10 @@
     }
 }
 */
-?>
-
-<?php
 
 $title = "Biblioverse";
 $description = "Vous pouvez rentrer dans le monde des livres";
-$currentPage = "recherche";
+$currentPage = "book";
 
 require("include/header.inc.php");
 require("include/function.php");

@@ -159,13 +159,12 @@ function book($isbn)
         $book .= "\t\t\t\t" . "</div>" . "\n";
         $book .= "\t\t\t" . "</div>" . "\n";
 
-
     }
 
-
     return $book;
-
 }
 
+function cookie () : string{
 
+}
 ?>

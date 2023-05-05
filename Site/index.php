@@ -17,7 +17,10 @@ require("include/header.inc.php");
 					<a href="book.php?isbn=2070212009"><img src="images/l'Etranger.jpg"/></a>
       
                     <div>
-                        <span>L'Etranger</span>
+
+                        <span><?php if (isset($_COOKIE['style'])){
+                                echo ($_COOKIE['style']);
+                            }?>L'Etranger</span>
                         <span>Albert Camus</span>
                         <span><strong>Avis le plus aimé :</strong>
 
