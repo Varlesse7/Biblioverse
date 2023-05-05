@@ -78,7 +78,47 @@ require("include/header.inc.php");
             </div>
         </div>
     </section>
+	<?php
+// Ouvre le fichier visites.txt
+$file = fopen("visites.txt", "a+");
+// Récupère la date du jour
+$date = date("Y-m-d");
+// Initialise le nombre de visites à 0
+$visites = 0;
+// Parcourt le fichier pour trouver le nombre de visites pour la date du jour
+while (!feof($file)) {
+    $line = fgets($file);
+    $data = explode("|", $line);
+    if ($data[0] == $date) {
+        $visites = intval($data[1]);
+        break;
+    }
+}
+// Incrémente le nombre de visites
+$visites++;
+// Écrit la nouvelle ligne dans le fichier
+rewind($file);
+$newData = "$date|$visites\n";
+$found = false;
+while (!feof($file)) {
+    $line = fgets($file);
+    $data = explode("|", $line);
+    if ($data[0] == $date) {
+        $found = true;
+        $line = $newData;
+    }
+    $newFile .= $line;
+}
+if (!$found) {
+    $newFile .= $newData;
+}
+ftruncate($file, 0);
+fwrite($file, $newFile);
+fclose($file);
+?>
+
 </main>
+
 
 <?php require("./include/footer.inc.php"); ?>
 </html>
