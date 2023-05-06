@@ -160,13 +160,9 @@
 
         } else if (isset($_COOKIE['style']) && $_COOKIE['style'] == 'nuit') {
 
-            setcookie('style', 'nuit', time() + 3600);
-
             $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         } else if (isset($_COOKIE['style'])){
-
-            setcookie('style', 'jour', time() + 3600);
 
             $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
