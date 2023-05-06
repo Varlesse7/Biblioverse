@@ -3,19 +3,18 @@
     font-family: Georgia, Serif;
 }
 
+main {
+    background-color: #FFFFFF;
+    color: #222222;
+}
 a {
     text-decoration: none;
-    color: #FFB56A;
+    color: #222222;
+}
+a:hover {
+    color: #006699;
 }
 
-a:hover{
-    color: #FF8409;
-}
-
-main{
-    background-color: #FFB56A;
-
-}
 
 body{
     min-height: 100vh;
@@ -32,13 +31,14 @@ div span {
 }
 
 footer {
-    background-color: #0D1B2A;
-    color: #FFB56A;
+    background-color: #99C2FF;
+    color: #222222;
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 1%;
 }
+
 
 
 h1{
@@ -47,12 +47,14 @@ h1{
 }
 
 header {
-    background-color: #0D1B2A;
-    color : #FFB56A;
+    background-color: #99C2FF;
+    color: #222222;
     display: flex;
     justify-content: space-between;
     align-items: center;
+	padding: 1%;
 }
+
 
 p {
     text-align: justify;
@@ -71,8 +73,9 @@ strong{
 }
 
 .black_background{
-    background-color: #31263E;
-    color: #FFF8F0;
+    background-color: #E5E5E5;
+    color: #222222 ;
+    width: 100vw;
 
 }
 
@@ -130,8 +133,8 @@ strong{
 
 
 .orange_background{
-    background-color: #cccccc;
-    color: black ;
+    background-color: #FFFFFF;
+    color: #222222 ;
     width: 100vw;
 }
 
@@ -157,9 +160,20 @@ strong{
 .bers {
   font-family: "Baskerville", serif;
 }
-svg {
-    width: 100px;
-    height: 100px;
+
+.slick-prev,
+.slick-next {
+    background-color: black;
+    color: #FFB56A;
 }
+.svg-flexible {
+  width: 100%;
+  height: 50vh;
+}
+.span-profil {
+  font-size: 1.5em;
+  font-family: "Baskerville", serif;
+}
+
 
 

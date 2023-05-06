@@ -32,7 +32,6 @@
 <body>
 <header>
     <a href="profil.php">Profil</a>
-	<a href="stats.php">Stats</a>
     <?php
     session_start();
 
@@ -177,7 +176,6 @@
         }
         echo($a);
         ?>
-        <span>Biblioverse</span>
         <a href="index.php"><img src="./images/petit_Icon.png"></a>
     </div>
 </header>

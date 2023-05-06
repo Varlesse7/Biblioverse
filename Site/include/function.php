@@ -120,7 +120,8 @@ function search_google(): array
     return [$book, $page_count];
 }
 
-function book($isbn)
+
+function bookv1($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
     $info = file_get_contents($json);
@@ -132,6 +133,20 @@ function book($isbn)
     $title = $item['volumeInfo']['title'] ?? '';
     $authors = $item['volumeInfo']['authors']['0'] ?? '';
     $description = $item['volumeInfo']['description'] ?? '';
+	$bio = "";
+	if (!empty($authors)) {
+		$author = urlencode($authors);
+		$url = "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=$author&exintro=true&explaintext=true&exsentences=5";
+		$result = file_get_contents($url);
+		$result = json_decode($result, true);
+
+		$pages = $result['query']['pages'];
+		foreach ($pages as $page) {
+			$bio .= $page['extract'];
+		}
+	}
+
+	
     if ($thumbnail) {
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
@@ -141,6 +156,7 @@ function book($isbn)
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Biographie de l'auteur (Attention le nom de l'autheur doit etre complet) : " . $bio . "</span>" . "\n";
 
         $book .= "\t\t\t\t" . "</div>" . "\n";
         $book .= "\t\t\t" . "</div>" . "\n";
@@ -155,6 +171,7 @@ function book($isbn)
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Biographie: " . $bio . "</span>" . "\n";
 
         $book .= "\t\t\t\t" . "</div>" . "\n";
         $book .= "\t\t\t" . "</div>" . "\n";
@@ -163,6 +180,73 @@ function book($isbn)
 
     return $book;
 }
+function book($isbn)
+{
+    $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
+    $info = file_get_contents($json);
+    $info = json_decode($info, true);
+
+    $item = $info['items']['0'];
+
+    $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
+    $title = $item['volumeInfo']['title'] ?? '';
+    $authors = $item['volumeInfo']['authors']['0'] ?? '';
+    $description = $item['volumeInfo']['description'] ?? '';
+    $bio = "";
+    $author_image = "";
+
+    if (!empty($authors)) {
+        $author = urlencode($authors);
+        $url = "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageimages&titles=$author&exintro=true&explaintext=true&exsentences=5&pithumbsize=200";
+        $result = file_get_contents($url);
+        $result = json_decode($result, true);
+
+        $pages = $result['query']['pages'];
+        foreach ($pages as $page) {
+            $bio .= $page['extract'];
+            $author_image = $page['thumbnail']['source'] ?? '';
+        }
+    }
+
+    if ($thumbnail) {
+        $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+        $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+
+        $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span>" . "\n";
+		$book .= "\t\t\t\t\t" . "<center><span>Image de l'Autheur(Si le nom est complet):</span></center>" . "\n";
+        $book .= "\t\t\t\t\t" . "<center><img src='" . $author_image . "' alt=''></center>" . "\n";
+
+        $book .= "\t\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t\t" . "</div>" . "\n";
+
+    } else {
+        $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+        $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+
+        $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span>" . "\n";
+		$book .= "\t\t\t\t\t" . "<img src='" . $author_image . "' alt='Photo Autheur'>" . "\n";
+		if (empty($author_image)) {
+			$book .= "\t\t\t\t\t" . "<img src='" . "images/placeholder.png" . "' alt=''>" . "\n";
+		}
+
+		$book .= "\t\t\t\t" . "</div>" . "\n";
+		$book .= "\t\t\t" . "</div>" . "\n";
+		}
+		return $book;
+}
+			
+
+
 function save_5_derniers() {
     if(isset($_GET['search'])){
         $_SESSION['search'] = $_GET['search'];
@@ -227,17 +311,22 @@ function afficher_stats() {
     }
     $search_counts = array_count_values($search_terms);
     arsort($search_counts);
-    $top_searches = array_slice($search_counts, 0, 5);
-    echo "<table>";
-    echo "<thead><tr><th>Recherche</th><th>Nombre de fois</th></tr></thead>";
+    $top_searches = array_slice($search_counts, 0, 3);
+
+    echo '<div style="display:flex; justify-content:center;">';
+    echo "<table style='border-collapse: collapse;'>";
+	echo "<caption>TOP 3 des recherches sur Biblioverse</caption>";
+    echo "<thead><tr><th style='border:1px solid black; padding:5px;'>Recherche</th><th style='border:1px solid black; padding:5px;'>Nombre de fois</th></tr></thead>";
     echo "<tbody>";
     foreach($top_searches as $search_term => $count){
-        echo "<tr><td>$search_term</td><td>$count</td></tr>";
+        echo "<tr style='border:1px solid black;'><td style='border:1px solid black; padding:5px;'>$search_term</td><td style='border:1px solid black; padding:5px;'>$count</td></tr>";
     }
     echo "</tbody>";
     echo "</table>";
+    echo '</div>';
     fclose($file);
 }
+
 function calculer_visites() {
     $visites = 0;
     if (file_exists("visites.txt")) {
@@ -281,6 +370,41 @@ function enregistrer_visites() {
     ftruncate($file, 0);
     fwrite($file, $newFile);
     fclose($file);
+}
+function afficher_svg() {
+    $lines = file('visites.txt');
+
+    $labels = array();
+    $values = array();
+
+    foreach ($lines as $line) {
+        $parts = explode('|', $line);
+        $labels[] = $parts[0];
+        $values[] = intval($parts[1]);
+    }
+    $max_value = max($values);
+    $base_width = 1000;
+    $base_height = 600;
+    $margin_top = 50;
+    $svg_width = $base_width;
+    $svg_height = $base_height - $margin_top;
+
+    $bar_width = $svg_width / count($values);
+    $bar_padding = $bar_width * 0.2;
+
+    $svg = '<svg width="' . $svg_width . '" height="' . $svg_height . '">';
+
+    for ($i = 0; $i < count($values); $i++) {
+        $x = $i * $bar_width + $bar_padding;
+        $y = $svg_height - $values[$i] * $svg_height / $max_value;
+        $height = $values[$i] * $svg_height / $max_value;
+
+        $svg .= '<rect x="' . $x . '" y="' . $y . '" width="' . ($bar_width - 2 * $bar_padding) . '" height="' . $height . '" fill="#0077CC" />';
+        $svg .= '<text x="' . ($x + ($bar_width - 2 * $bar_padding) / 2) . '" y="' . ($y - 5) . '" text-anchor="middle" fill="#000000">' . $labels[$i] . ' (' . $values[$i] . ')</text>';
+    }
+
+    $svg .= '</svg>';
+    echo $svg;
 }
 
 

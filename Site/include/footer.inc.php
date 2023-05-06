@@ -2,7 +2,7 @@
 
 <footer>
 
-    <span><a href="tech.php">Tech</a> | Pierre Franck-Papuchon & Massyl Ould Younes | Biblioverse | 2022/2023</span>
+    <span><a href="stats.php">Stats</a> | <a href="tech.php">Tech</a> | Pierre Franck-Papuchon & Massyl Ould Younes | Biblioverse | 2022/2023</span>
 
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
