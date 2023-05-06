@@ -163,6 +163,126 @@ function book($isbn)
 
     return $book;
 }
+function save_5_derniers() {
+    if(isset($_GET['search'])){
+        $_SESSION['search'] = $_GET['search'];
+        $search = $_GET['search'];
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $filename = 'historique/' . $ip . '.csv';
+        $rows = array();
+        if(file_exists($filename)){
+            $file = fopen($filename, 'r');
+            while (($row = fgetcsv($file)) !== false) {
+                $rows[] = $row;
+            }
+            fclose($file);
+        }
+
+        $new_row = array(date('Y-m-d H:i:s'), $search);
+        array_push($rows, $new_row);
+        if(count($rows) > 5){
+            array_shift($rows);
+        }
+
+        $file = fopen($filename, 'w');
+        foreach($rows as $row){
+            fputcsv($file, $row);
+        }
+        fclose($file);
+    }
+}
+
+function afficher_5_derniers() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $filename = 'historique/' . $ip . '.csv';
+    $rows = array();
+    if(file_exists($filename)){
+        $file = fopen($filename, 'r');
+        while (($row = fgetcsv($file)) !== false) {
+            $rows[] = $row;
+        }
+        fclose($file);
+    }
+    $last_five_rows = array_slice($rows, -5);
+    echo "<ul>";
+    foreach ($last_five_rows as $row) {
+        echo "<li>$row[0] - $row[1]</li>";
+    }
+    echo "</ul>";
+}
+function ecrire_stats() {
+    if(isset($_GET['search'])){
+        $search_term = $_GET['search'];
+        $date = date('Y-m-d H:i:s');
+        $file = fopen('log_total.csv', 'a');
+        fputcsv($file, array($date, $search_term));
+        fclose($file);
+    }
+}
+function afficher_stats() {
+    $file = fopen('log_total.csv', 'r');
+    $search_terms = array();
+    while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
+        $search_terms[] = $data[1];
+    }
+    $search_counts = array_count_values($search_terms);
+    arsort($search_counts);
+    $top_searches = array_slice($search_counts, 0, 5);
+    echo "<table>";
+    echo "<thead><tr><th>Recherche</th><th>Nombre de fois</th></tr></thead>";
+    echo "<tbody>";
+    foreach($top_searches as $search_term => $count){
+        echo "<tr><td>$search_term</td><td>$count</td></tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+    fclose($file);
+}
+function calculer_visites() {
+    $visites = 0;
+    if (file_exists("visites.txt")) {
+        $lines = file("visites.txt");
+        foreach ($lines as $line) {
+            $data = explode("|", trim($line));
+            $visites += intval($data[1]);
+        }
+    }
+    return $visites;
+}
+function enregistrer_visites() {
+    $file = fopen("visites.txt", "a+");
+    $date = date("Y-m-d");
+    $visites = 0;
+    while (!feof($file)) {
+        $line = fgets($file);
+        $data = explode("|", $line);
+        if ($data[0] == $date) {
+            $visites = intval($data[1]);
+            break;
+        }
+    }
+    $visites++;
+    rewind($file);
+    $newData = "$date|$visites\n";
+    $found = false;
+    $newFile = "";
+    while (!feof($file)) {
+        $line = fgets($file);
+        $data = explode("|", $line);
+        if ($data[0] == $date) {
+            $found = true;
+            $line = $newData;
+        }
+        $newFile .= $line;
+    }
+    if (!$found) {
+        $newFile .= $newData;
+    }
+    ftruncate($file, 0);
+    fwrite($file, $newFile);
+    fclose($file);
+}
+
 
 function cookie () : string{
 

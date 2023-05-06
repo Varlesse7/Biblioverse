@@ -7,6 +7,9 @@ $currentPage = "tech";
 require("include/header.inc.php");
 ?>
 <main>
+	<a href="#" onclick="history.back()">
+	<img src="images/arrow-go-back-line.svg" width="100" height="100">
+	</a>
     <?php
     $nasa = file_get_contents("https://api.nasa.gov/planetary/apod?api_key=Pjqxo5xGM1Hr1BvyPIQLyJNh8gJcoua1kWzvxwZr");
     $tableau = json_decode($nasa, true);

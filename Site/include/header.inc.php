@@ -32,6 +32,7 @@
 <body>
 <header>
     <a href="profil.php">Profil</a>
+	<a href="stats.php">Stats</a>
     <?php
     session_start();
 

@@ -151,3 +151,7 @@ strong{
     grid-template-rows: 1fr 1fr 1fr;
 
 }
+svg {
+    width: 100px;
+    height: 100px;
+}

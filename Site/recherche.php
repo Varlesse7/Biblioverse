@@ -21,31 +21,17 @@ require("include/function.php");
 
 ?>
 <main>
-	<button onclick="history.back()">Retour temporaire</button>
 
     <section class="black_background">
+	<a href="#" onclick="history.back()">
+	<img src="images/arrow-go-back-line.svg" width="100" height="100">
+	</a>
         <div class='spacing'>
             <h1>Résultat(s) de la recherche:</h1>
-            <?
-			if(isset($_GET['search'])){
-			$_SESSION['search'] = $_GET['search'];
-			$search = $_GET['search'];
-			$ip = $_SERVER['REMOTE_ADDR'];
-			$filename = 'historique/' . $ip . '.txt';
-			$file = fopen($filename, 'a');
-			fwrite($file, date('Y-m-d H:i:s') . ' - ' . $search ."\n");
-			fclose($file);
-			}
-			if(isset($_GET['genre'])){
-			$_SESSION['genre'] = $_GET['genre'];
-			}
-			if (isset($_GET['autheur'])) {
-				$_SESSION['autheur'] = true;
-			} else {
-				$_SESSION['autheur'] = false;
-			}
-
-
+            <?php
+			save_5_derniers();
+			?>
+			<?php
             $array = search_google();
             echo($array[0]);
             $form = '<form method="get" action = "recherche.php">';
@@ -57,8 +43,11 @@ require("include/function.php");
             }
             $form .='</form>';
             echo($form);
-
             ?>
+			<?php
+			ecrire_stats();
+			?>
+			
         </div>
     </section>
     <section class="orange_background">

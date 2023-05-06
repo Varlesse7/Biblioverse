@@ -1,16 +1,4 @@
 <?php
-/*if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['genre']) && !empty($_GET['genre'])) {
-        $searchby = 'genre';
-        $search = $_GET['genre'];
-    } elseif (isset($_GET['searchby']) && isset($_GET['search']) && !empty($_GET['search'])) {
-        $searchby = $_GET['searchby'];
-        $search = $_GET['search'];
-    } else {
-    }
-}
-*/
-
 $title = "Biblioverse";
 $description = "Vous pouvez rentrer dans le monde des livres";
 $currentPage = "book";
@@ -20,9 +8,11 @@ require("include/function.php");
 
 ?>
 <main>
-	<button onclick="history.back()">Retour temporaire</button>
 
     <section class="black_background">
+	<a href="#" onclick="history.back()">
+	<img src="images/arrow-go-back-line.svg" width="100" height="100">
+	</a>
         <div class='spacing'>
             <?php
             echo (book($_GET['isbn']));

@@ -8,47 +8,17 @@ require("include/function.php");
 
 ?>
 <main>
-	<button onclick="history.back()">Retour temporaire</button>
+
 
     <section class="black_background">
+	<a href="#" onclick="history.back()">
+	<img src="images/arrow-go-back-line.svg" width="100" height="100">
+	</a>
         <div class='spacing'>
-            <h1>Votre Historique si vous en avez un:</h1>
+            <h1>Voici l'historique de vos 5 dernières recherches:</h1>
 			<?php
-			$ip = $_SERVER['REMOTE_ADDR'];
-			$file = "historique/$ip.txt";
-
-			if(isset($_GET['search']) && !empty(trim($_GET['search']))) {
-				$search = $_GET['search'];
-
-				if (!file_exists($file)) {
-					$fh = fopen($file, 'w') or die("Can't create file");
-				} else {
-					$fh = fopen($file, 'a') or die("Can't open file");
-				}
-
-				fwrite($fh, date('Y-m-d H:i:s') . ' - ' . $search ."\n");
-
-				fclose($fh);
-			}
-
-			/* Afficher toutes les recherches */
-			$searches = array();
-			if (file_exists($file)) {
-				$lines = file($file);
-				foreach ($lines as $line) {
-					$searches[] = trim($line);
-				}
-			}
-
-			echo "<ul>";
-			foreach ($searches as $search) {
-				echo "<li>$search</li>";
-			}
-			echo "</ul>";
+			afficher_5_derniers();
 			?>
-
-
-
         </div>
     </section>
     <section class="orange_background">
