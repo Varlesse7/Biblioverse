@@ -63,24 +63,9 @@ require("include/function.php");
             </div>
         </div>
     </section>
-    <section class="orange_background">
-        <div class='spacing'>
-            <h2 class="bers">Rentrez dans l'univers des livres</h2>
-            <div class="biblioverse-container">
-                <img src="images/BiblioverseOriginal.png" alt="Biblioverse">
-                <p class="center">Vous êtes sur un site pour la recherche de livre, vous pourrez trouver ici tous les
-                    livres
-                    qui vous
-                    intéressent, mais aussi d'autre fonctionnalité pour rendre votre parcours sur notre site le plus
-                    simple
-                    possible. Notre but sera de vous aider à trouver de nouvelles livres à lire, mais aussi de, vous
-                    laissez parler des livres que vous connaissez pour vous permettre d'aider nos autres utilisateurs à
-                    faire leur première impression.
-                </p>
-            </div>
-        </div>
-    </section>
+    
 	<?php
+	photo_dynamique();
 	enregistrer_visites();
 	?>
 

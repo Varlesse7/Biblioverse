@@ -233,7 +233,7 @@ function book($isbn)
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span><br><br>" . "\n";
 		$book .= "\t\t\t\t\t" . "<img src='" . $author_image . "' alt='Photo Autheur'>" . "\n";
 		if (empty($author_image)) {
 			$book .= "\t\t\t\t\t" . "<img src='" . "images/placeholder.png" . "' alt=''>" . "\n";
@@ -406,7 +406,27 @@ function afficher_svg() {
     $svg .= '</svg>';
     echo $svg;
 }
-
+function photo_dynamique() {
+    $chemin_dossier = "photos/";
+    $liste_fichiers = scandir($chemin_dossier);
+    $images = array();
+    foreach ($liste_fichiers as $fichier) {
+        $extension = pathinfo($fichier, PATHINFO_EXTENSION);
+        if (in_array($extension, array("jpg", "jpeg", "png", "gif"))) {
+            $images[] = $fichier;
+        }
+    }
+    $image_aleatoire = $images[array_rand($images)];
+    echo "<section class='orange_background'>";
+    echo "<div class='spacing'>";
+    echo "<h2 class='bers'>Rentrez dans l'univers des livres</h2>";
+    echo "<div class='biblioverse-container'>";
+    echo "<img src='photos/$image_aleatoire' alt='image aléatoire'>";
+    echo "<p class='center'>Vous êtes sur un site pour la recherche de livre, vous pourrez trouver ici tous les livres qui vous intéressent, mais aussi d'autre fonctionnalité pour rendre votre parcours sur notre site le plus simple possible. Notre but sera de vous aider à trouver de nouvelles livres à lire, mais aussi de, vous laissez parler des livres que vous connaissez pour vous permettre d'aider nos autres utilisateurs à faire leur première impression.</p>";
+    echo "</div>";
+    echo "</div>";
+    echo "</section>";
+}
 
 function cookie () : string{
 
