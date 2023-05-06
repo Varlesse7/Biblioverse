@@ -12,7 +12,7 @@ require("include/function.php");
 
     <section class="black_background">
 	<a href="#" onclick="history.back()">
-	<img src="images/arrow-go-back-line.svg" width="100" height="100">
+	<img src="images/arrow-go-back-line-nuit.svg" width="100" height="100">
 	</a>
         <div class='spacing'>
             <h1>Voici l'historique de vos 5 dernières recherches:</h1>
