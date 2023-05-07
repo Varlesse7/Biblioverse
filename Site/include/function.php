@@ -20,7 +20,6 @@ function search_google(): array
         if (isset($_GET['autheur']) && isset($_GET['search'])) {
             while ($i < 5) {
                 $url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:" . urlencode($_GET['search']) . "&max_results=20&startIndex=" . $i * 20 . "&key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E";
-                //echo $url;
                 $json = file_get_contents($url);
 
                 $items = json_decode($json, true);
