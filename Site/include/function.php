@@ -99,10 +99,10 @@ function search_google(): array
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
         if ($thumbnail) {
-            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . $thumbnail . "'/></a>" . "\n";
+            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . $thumbnail . "' alt='book'/></a>" . "\n";
         } else {
 
-            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . "images/placeholder.png" . "'/></a>" . "\n";
+            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . "images/placeholder.png" . "' alt='book'/></a>" . "\n";
 
         }
 
@@ -113,10 +113,11 @@ function search_google(): array
         $book .= "\t\t\t\t" . "</div>" . "\n";
 
 
-        $book .= "\t\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t\t" . "</div>" . "\n";
 
 
     }
+    $book .= "</div>";
     return [$book, $page_count];
 }
 
@@ -196,7 +197,7 @@ function book($isbn)
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "' alt='"."book"."'>" . "\n";
 
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
@@ -210,7 +211,7 @@ function book($isbn)
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "' alt='"."book"."'>" . "\n";
 
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";

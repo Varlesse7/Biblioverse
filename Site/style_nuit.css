@@ -135,6 +135,11 @@ form.form{
 }
 
 
+.submit:hover{
+    color: white;
+
+}
+
 select {
     width: 120px;
     height: 30px;
@@ -143,9 +148,20 @@ select {
     color: #FFB56A;
     border-radius: 5px;
 }
-.submit:hover{
-    color: white;
 
+select:hover{
+    border: 2px solid white;
+    background: none;
+    color: #FF8000;
+    border-radius: 5px;
+}
+
+select:active{
+    outline: none;
+    border: 2px solid white;
+    background: none;
+    color: #FF8000;
+    border-radius: 5px;
 }
 
 .search{
@@ -160,16 +176,68 @@ select {
 
 .search:focus{
     outline: none;
+    height: 25px;
+    border: 2px solid white;
+    background: none;
+    color: white;
+    border-radius: 5px;
 }
 
 .search:hover{
     height: 25px;
-    border: 2px solid #FFB56A;
+    border: 2px solid white;
     background: none;
-    color: #FFB56A;
+    color: white;
     border-radius: 5px;
 }
 
+:root {
+    --form-control-color:#FF8000;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.fleche{
+    width: 50px;
+    height: 50px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+
+
+    place-content: center;
+}
+
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
 
 .end-header{
     display: flex;
@@ -213,7 +281,6 @@ select {
 }
 img.index{
     margin-top: 2%;
-    margin-bottom: 2%;
 }
 .svg-flexible {
   width: 100%;
