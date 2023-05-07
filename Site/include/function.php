@@ -1,4 +1,25 @@
 <?php
+
+/**
+		*@file
+		*@author MassylOY / Frank-Papuchon Pierre
+		*@version 1.1.7
+	*/
+
+
+
+
+
+
+
+
+
+
+/**  
+	* La fonction va permetre grace a des requetes api de google books d'obtenir un resutlat de recherche sur des paramètres de recherche il peut y avoir jusqu'a 5 pages de resultats
+	* @param Rien
+	* @return $book et $page_count
+	*/
 function search_google(): array
 {
     $page_count = 0;
@@ -121,7 +142,11 @@ function search_google(): array
     return [$book, $page_count];
 }
 
-
+/**  
+	* Ancienne version de books
+	* @param $isbn
+	* @return $book
+	*/
 function bookv1($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
@@ -181,6 +206,13 @@ function bookv1($isbn)
 
     return $book;
 }
+
+
+/**  
+	* Ancienne version de books
+	* @param $isbn
+	* @return $book
+	*/
 function bookV2($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
@@ -226,7 +258,13 @@ function bookV2($isbn)
 
     return $book;
 
-}	
+}
+
+/**  
+	* Ancienne version de books
+	* @param $isbn
+	* @return $book
+	*/
 function bookV3($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
@@ -295,7 +333,11 @@ function bookV3($isbn)
 
     return $book;
 }
-
+/**  
+	* La fonction book va nous afficher via un isbn le titre / la thumbnail / l'autheur du livre de l'isbn si il existe mais aussi 4 autres livres du meme autheur / du meme type si il y en a.Il nous renvera une variable contenant du flux html.
+	* @param $isbn
+	* @return $book
+	*/
 function book($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
@@ -387,8 +429,16 @@ function book($isbn)
     $book .= "\t\t\t" . "</div>" . "\n";
 }
 
+
+
 return $book;
 }
+
+/**  
+	* La fonction va permettre de sauvgarder a chaque recherche le contenu de la recherche dans un fichier nomée avec l'ip de l'utilisateur.
+	* @param Rien
+	* @return Rien
+	*/
 function save_5_derniers() {
     if(isset($_GET['search'])){
         $_SESSION['search'] = $_GET['search'];
@@ -417,7 +467,11 @@ function save_5_derniers() {
         fclose($file);
     }
 }
-
+/**  
+	* La fonction va en fonction de l'ip de l'utilisateur permettre d'afficher les 5 dernières recherche de l'utilisateur via des echo depuis un fichier csv nomée grace au nom de l'utilisateur
+	* @param Rien
+	* @return Flux Html
+	*/
 function afficher_5_derniers() {
     $ip = $_SERVER['REMOTE_ADDR'];
     $filename = 'historique/' . $ip . '.csv';
@@ -436,6 +490,11 @@ function afficher_5_derniers() {
     }
     echo "</ul>";
 }
+/**  
+	* La fonction va écrire dans un fichier log_total.csv chaque recherche sur un livre 
+	* @param Rien
+	* @return Rien
+	*/
 function ecrire_stats() {
     if(isset($_GET['search'])){
         $search_term = $_GET['search'];
@@ -445,6 +504,12 @@ function ecrire_stats() {
         fclose($file);
     }
 }
+
+/**  
+	* La fonction grace a un fichier log_total.csv va permetre de nous renvoyer via des echo le flux html d'un tableau contenant les informations sur les livres consultées sur biblioverse / elle calcule les 3 livres les plus consultés et les affiche dans le tableau
+	* @param Rien
+	* @return Flux HTML
+	*/
 function afficher_stats() {
     $file = fopen('log_total.csv', 'r');
     $search_terms = array();
@@ -468,7 +533,11 @@ function afficher_stats() {
     echo '</div>';
     fclose($file);
 }
-
+/**  
+	* La fonction va nous calculer le nombre de visites sur le site web grace au fichier visites.txt
+	* @param Rien
+	* @return $visites contenant le nombre de visites sur le site web total
+	*/
 function calculer_visites() {
     $visites = 0;
     if (file_exists("visites.txt")) {
@@ -480,6 +549,12 @@ function calculer_visites() {
     }
     return $visites;
 }
+
+/**  
+	* La fonction permet d'enregistrer/ ajouter a la fin du fichier a chaque fois qu'un utilisateur va sur le site web dans le fichier visites.txt 
+	* @param Rien
+	* @return Rien
+	*/
 function enregistrer_visites() {
     $file = fopen("visites.txt", "a+");
     $date = date("Y-m-d");
@@ -513,6 +588,13 @@ function enregistrer_visites() {
     fwrite($file, $newFile);
     fclose($file);
 }
+
+
+/**  
+	* La fonction va via le fichier visites.txt contenant le nombre de visites du site par jour et la date va nous generer un graphique SVG a barre en fonction du nombre de visites par jour
+	* @param Rien
+	* @return $svg la variable contenant le flux html de notre SVG graph
+	*/
 function afficher_svg() {
     $lines = file('visites.txt');
 
@@ -549,6 +631,12 @@ function afficher_svg() {
     $svg .= '</svg>';
     echo $svg;
 }
+
+/**  
+	* La fonction va parcourir le fichier photo pour nous afficher dynamiquement sur l'index une image du fichier.
+	* @param Rien
+	* @return du flux html de l'image générée via un echo
+	*/
 function photo_dynamique() {
     $chemin_dossier = "photos/";
     $liste_fichiers = scandir($chemin_dossier);
