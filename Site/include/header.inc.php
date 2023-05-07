@@ -48,11 +48,13 @@
                 } ?>>
             </label>
 
-            <input type="text" name="search" id="search" placeholder="Un mot-clé, un titre ou un auteur" value="<?php
-            if (isset($_GET['search'])) {
-                echo($_GET['search']);
-            } ?>">
-
+            <label for="search">
+                <input class="search" type="text" name="search" id="search"
+                       placeholder="Recherche" value="<?php
+                if (isset($_GET['search'])) {
+                    echo($_GET['search']);
+                } ?>">
+            </label>
             <label for="genre"></label>
             <select name="genre" id="genre">
                 <option value="" <?php if ($genre == '') {
@@ -145,24 +147,24 @@
 
             setcookie('style', 'nuit', time() + 3600);
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         } else if (isset($_GET['style'])) {
             setcookie('style', 'jour', time() + 3600);
 
-            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
         } else if (isset($_COOKIE['style']) && $_COOKIE['style'] == 'nuit') {
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
-        } else if (isset($_COOKIE['style'])){
+        } else if (isset($_COOKIE['style'])) {
 
-            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
-        } else{
+        } else {
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         }
         echo($a);
