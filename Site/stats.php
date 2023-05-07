@@ -8,7 +8,7 @@ require("include/header.inc.php");
 require("include/function.php");
 ?>
 <main>
-	<section class="black_background">
+	<section class="orange_background">
 	<?php
 		$style_actuel = '';
 		if (isset($_GET['style'])) {
@@ -45,7 +45,7 @@ require("include/function.php");
 	?>
 
 	</section>
-<main>
+</main>
 
 <?php require("./include/footer.inc.php"); ?>
 </html>

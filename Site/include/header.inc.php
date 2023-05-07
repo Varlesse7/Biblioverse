@@ -40,15 +40,18 @@
 
     <div class="seach-bar">
         <form method="GET" action="recherche.php">
-            <input type="text" name="search" id="search" placeholder="Un mot-clé, un titre ou un auteur"
-                   style="width: 250px;border: 1px solid #ccc;" value="<?php
+            <label>
+                Auteur
+                <input type="checkbox" name="autheur" value="autheur" <?php
+                if (isset($_GET['autheur'])) {
+                    echo($_GET['search']);
+                } ?>>
+            </label>
+
+            <input type="text" name="search" id="search" placeholder="Un mot-clé, un titre ou un auteur" value="<?php
             if (isset($_GET['search'])) {
                 echo($_GET['search']);
             } ?>">
-            <input type="checkbox" name="autheur" value="autheur" <?php
-            if (isset($_GET['autheur'])) {
-                echo($_GET['search']);
-            } ?>> Autheur</center>
 
             <label for="genre"></label>
             <select name="genre" id="genre">
@@ -116,9 +119,8 @@
                     echo 'selected';
                 } ?>>Voyages
                 </option>
-
             </select>
-            <button type="submit">Rechercher</button>
+            <button class="submit" type="submit">Rechercher</button>
         </form>
 
         <?php

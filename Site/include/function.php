@@ -428,7 +428,4 @@ function photo_dynamique() {
     echo "</section>";
 }
 
-function cookie () : string{
-
-}
 ?>
