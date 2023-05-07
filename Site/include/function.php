@@ -180,7 +180,7 @@ function bookv1($isbn)
 
     return $book;
 }
-function book($isbn)
+function bookV2($isbn)
 {
     $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
     $info = file_get_contents($json);
@@ -226,8 +226,168 @@ function book($isbn)
     return $book;
 
 }	
+function bookV3($isbn)
+{
+    $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
+    $info = file_get_contents($json);
+    $info = json_decode($info, true);
 
+    $item = $info['items']['0'];
 
+    $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
+    $title = $item['volumeInfo']['title'] ?? '';
+    $authors = $item['volumeInfo']['authors']['0'] ?? '';
+    $description = $item['volumeInfo']['description'] ?? '';
+    $author = urlencode($authors);
+    $json_author = "https://www.googleapis.com/books/v1/volumes?q=+inauthor:" . $author;
+    $info_author = file_get_contents($json_author);
+    $info_author = json_decode($info_author, true);
+    $other_books = '';
+    if (isset($info_author['items'])) {
+        $other_books .= "<div class='other-books-container'><h3>Autres titres de l'auteur:</h3><ul>";
+        $count = 0;
+        foreach ($info_author['items'] as $item) {
+            if ($item['id'] == $info['items'][0]['id']) {
+                continue;
+            }
+            $title = $item['volumeInfo']['title'];
+            $book_link = $item['volumeInfo']['infoLink'];
+            $other_books .= "<li><a href='" . $book_link . "'>" . $title . "</a></li>";
+            $count++;
+            if ($count == 4) {
+                break;
+            }
+        }
+        $other_books .= "</ul></div>";
+    }
+
+    if ($thumbnail) {
+        $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+        $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+
+        $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+
+        $book .= $other_books;
+
+        $book .= "\t\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t\t" . "</div>" . "\n";
+    } else {
+        $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+        $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+
+        $book .= "\t\t\t\t" ."<div class='solo_book_container'>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+        $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+
+        $book .= $other_books;
+
+        $book .= "\t\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t" . "</div>" . "\n";
+    }
+
+    return $book;
+}
+
+function book($isbn)
+{
+    $json = "https://www.googleapis.com/books/v1/volumes?q=+isbn:" . $isbn;
+    $info = file_get_contents($json);
+    $info = json_decode($info, true);
+
+    $item = $info['items']['0'];
+
+    $thumbnail = $item['volumeInfo']['imageLinks']['thumbnail'] ?? '';
+    $title = $item['volumeInfo']['title'] ?? '';
+    $authors = $item['volumeInfo']['authors']['0'] ?? '';
+    $description = $item['volumeInfo']['description'] ?? '';
+    $author = urlencode($authors);
+    $json_author = "https://www.googleapis.com/books/v1/volumes?q=+inauthor:" . $author;
+    $info_author = file_get_contents($json_author);
+    $info_author = json_decode($info_author, true);
+    $other_books = '';
+    if (isset($info_author['items'])) {
+		$other_books .="\n";
+		$other_books .="\n";
+		$other_books .="\n";
+		$other_books .="\n";
+		$other_books .="\n";
+		$other_books .="\n";
+        $other_books .= "<div class='other-books-container'><h3>Autres titres de l'auteur / Autres titres du meme genre:</h3><ul>";
+        $count = 0;
+        foreach ($info_author['items'] as $item) {
+            if ($item['id'] == $info['items'][0]['id']) {
+                continue;
+            }
+            if (isset($item['volumeInfo']['industryIdentifiers'][0]['identifier'])) {
+			$other_isbn = $item['volumeInfo']['industryIdentifiers'][0]['identifier'];
+			$other_title = $item['volumeInfo']['title']; // PB ici?
+			/*Partie que tu dois délete toi */
+			if (preg_match('/^(97(8|9))?\d{9}(\d|X)$/', $other_isbn)) {
+				$book_link = "http://massyl-oy.alwaysdata.net/book.php?isbn=" . $other_isbn;
+			} else {
+				$book_link = '';
+			}
+			/*fin de la partie que tu dois délete */
+			
+			/*remplace par ça toi*/
+			/*
+			if (preg_match('/^(97(8|9))?\d{9}(\d|X)$/', $other_isbn)) { //Fraude mais si jamais l'isbn n'est pas valide il me redirige vers le livre de base mais affiche quand mme le lien
+				$book_link = "https://franck-papuchon.alwaysdata.net/book.php?isbn=" . $other_isbn;
+			} else {
+				$book_link = '';
+			}
+			*/
+			$other_books .= "<li><a href='" . $book_link . "'>" . $other_title . "</a></li>";
+			$count++;
+			if ($count == 4) {
+				break;
+			}
+		}
+		}
+        $other_books .= "</ul></div>";
+    } else {
+        $other_books = '';
+    }
+
+    if ($thumbnail) {
+        $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+        $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+
+        $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
+           $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+    $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+
+    $book .= $other_books;
+
+    $book .= "\t\t\t\t" . "</div>" . "\n";
+    $book .= "\t\t\t" . "</div>" . "\n";
+} else {
+    $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
+
+    $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
+    $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+
+    $book .= "\t\t\t\t" ."<div class='solo_book_container'>" . "\n";
+    $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
+    $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
+
+    $book .= $other_books;
+
+    $book .= "\t\t\t\t" . "</div>" . "\n";
+    $book .= "\t\t\t" . "</div>" . "\n";
+}
+
+return $book;
+}
 function save_5_derniers() {
     if(isset($_GET['search'])){
         $_SESSION['search'] = $_GET['search'];
