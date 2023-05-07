@@ -595,8 +595,8 @@ function enregistrer_visites() {
 	* @param Rien
 	* @return $svg la variable contenant le flux html de notre SVG graph
 	*/
-function afficher_svg() {
-    $lines = file('visites.txt');
+function afficher_svg(string $file) {
+    $lines = file($file);
 
     $labels = array();
     $values = array();
@@ -617,15 +617,15 @@ function afficher_svg() {
     $bar_width = $svg_width / count($values);
     $bar_padding = $bar_width * 0.2;
 
-    $svg = '<svg viewbox="'."0 0"." ". $base_width." ". $base_height.'">';
-
+    $svg = '<svg viewbox="'."0 0"." ". $base_width." ". ($base_height) .'">';
     for ($i = 0; $i < count($values); $i++) {
+
         $x = $i * $bar_width + $bar_padding;
         $y = $svg_height - $values[$i] * $svg_height / $max_value;
         $height = $values[$i] * $svg_height / $max_value;
 
         $svg .= '<rect x="' . $x . '" y="' . $y . '" width="' . ($bar_width - 2 * $bar_padding) . '" height="' . $height . '" fill="#0077CC" />';
-        $svg .= '<text x="' . ($x + ($bar_width - 2 * $bar_padding) / 2) . '" y="' . ($y - 5) . '" text-anchor="middle" fill="#000000">' . $labels[$i] . ' (' . $values[$i] . ')</text>';
+        $svg .= '<text x="' . ($x + ($bar_width - 2 * $bar_padding) / 2) . '" y="' . ($y+$height+15) . '" text-anchor="middle" fill="#000000">' . $labels[$i] . ' (' . $values[$i] . ')</text>';
     }
 
     $svg .= '</svg>';

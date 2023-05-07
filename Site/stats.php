@@ -21,7 +21,7 @@ require("include/function.php");
 
 
 	<?php
-	afficher_svg()
+	afficher_svg('visites.txt')
 	?>
 
 	<?php

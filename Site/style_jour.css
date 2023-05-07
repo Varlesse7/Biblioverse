@@ -204,11 +204,10 @@ select:active{
 }
 
 svg{
-    display: flex;
+    display: grid;
     width: 50%;
     justify-self: center;
 }
-
 input[type="checkbox"] {
     appearance: none;
     background-color: #fff;
