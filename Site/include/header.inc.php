@@ -121,10 +121,11 @@
             </select>
 
             <button class="submit" type="submit">Rechercher</button>
+        </div>
+
     </form>
 
 
-    </div>
     <div class="end-header">
         <?php
         parse_str($_SERVER['QUERY_STRING'], $args);
@@ -145,24 +146,24 @@
 
             setcookie('style', 'nuit', time() + 3600);
 
-            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . urlencode($argument) . '">Mode jour</a>';
 
         } else if (isset($_GET['style'])) {
             setcookie('style', 'jour', time() + 3600);
 
-            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . urlencode($argument) . '">Mode nuit</a>';
 
         } else if (isset($_COOKIE['style']) && $_COOKIE['style'] == 'nuit') {
 
-            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . urlencode($argument) . '">Mode jour</a>';
 
         } else if (isset($_COOKIE['style'])) {
 
-            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=nuit' . urlencode($argument) . '">Mode nuit</a>';
 
         } else {
 
-            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
+            $a = '<a class ="style" href="' . $currentPage . '.php?style=jour' . urlencode($argument) . '">Mode jour</a>';
 
         }
         echo($a);
