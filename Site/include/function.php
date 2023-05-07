@@ -455,7 +455,7 @@ function photo_dynamique()
     echo "<div class='spacing'>";
     echo "<h2>Rentrez dans l'univers des livres</h2>";
     echo "<div class='biblioverse-container'>";
-    echo "<img class='index' src='photos/$image_aleatoire' alt='image aléatoire'>";
+    echo "<img class='index' src='photos/$image_aleatoire' alt='image aléatoire'/>";
     echo "<p class='center'>Vous êtes sur un site pour la recherche de livre, vous pourrez trouver ici tous les livres qui vous intéressent, mais aussi d'autre fonctionnalité pour rendre votre parcours sur notre site le plus simple possible. Notre but sera de vous aider à trouver de nouvelles livres à lire, mais aussi de, vous laissez parler des livres que vous connaissez pour vous permettre d'aider nos autres utilisateurs à faire leur première impression.</p>";
     echo "</div>";
     echo "</div>";

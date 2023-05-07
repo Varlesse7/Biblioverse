@@ -21,9 +21,9 @@ require("include/function.php");
             $style_actuel = 'style_nuit.css';
         }
         if ($style_actuel == 'style_jour.css') {
-            echo '<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line.svg" alt=""></a>';
+            echo '<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line.svg" alt=""/></a>';
         } elseif ($style_actuel == 'style_nuit.css') {
-            echo '<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line-nuit.svg" alt=""></a>';
+            echo '<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line-nuit.svg" alt=""/></a>';
         }
         ?>
         <div class='spacing'>
@@ -45,7 +45,7 @@ require("include/function.php");
                     <li><a href="./html/globals_func.html">Documentation des fonctions crées</a></li>
                 </ul>
             </div>
-
+		</div>
     </section>
 </main>
 

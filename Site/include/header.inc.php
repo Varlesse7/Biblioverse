@@ -45,7 +45,7 @@
             <input type="checkbox" name="autheur" value="autheur" <?php
             if (isset($_GET['autheur'])) {
                 echo($_GET['search']);
-            } ?>>
+            } ?>/>
         </label>
         <div class="seach-bar">
             <label for="search">
@@ -53,7 +53,7 @@
                        placeholder="Recherche" value="<?php
                 if (isset($_GET['search'])) {
                     echo($_GET['search']);
-                } ?>">
+                } ?>"/>
             </label>
             <label for="genre"></label>
             <select name="genre" id="genre">

@@ -9,7 +9,7 @@ require("include/function.php");
 ?>
 <main>
 	<section class="orange_background">
-	<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line.svg" alt=""></a>
+	<a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line.svg" alt=""/></a>
     <h1>Statistiques des visites</h1>
     
 	<?php
