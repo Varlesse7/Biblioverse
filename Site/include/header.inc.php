@@ -152,24 +152,24 @@
 
             setcookie('style', 'nuit', time() + 3600);
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '"style="margin-right: 10px;">Mode jour</a>';
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         } else if (isset($_GET['style'])) {
             setcookie('style', 'jour', time() + 3600);
 
-            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '"style="margin-right: 10px;">Mode nuit</a>';
+            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
         } else if (isset($_COOKIE['style']) && $_COOKIE['style'] == 'nuit') {
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '"style="margin-right: 10px;">Mode jour</a>';
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         } else if (isset($_COOKIE['style'])){
 
-            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '"style="margin-right: 10px;">Mode nuit</a>';
+            $a = '<a href="' . $currentPage . '.php?style=nuit' . $argument . '">Mode nuit</a>';
 
         } else{
 
-            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '"style="margin-right: 10px;">Mode jour</a>';
+            $a = '<a href="' . $currentPage . '.php?style=jour' . $argument . '">Mode jour</a>';
 
         }
         echo($a);
