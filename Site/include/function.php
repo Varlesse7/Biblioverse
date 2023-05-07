@@ -617,7 +617,7 @@ function afficher_svg() {
     $bar_width = $svg_width / count($values);
     $bar_padding = $bar_width * 0.2;
 
-    $svg = '<svg width="' . $svg_width . '" height="' . $svg_height . '">';
+    $svg = '<svg viewbox="'."0 0"." ". $base_width." ". $base_height.'">';
 
     for ($i = 0; $i < count($values); $i++) {
         $x = $i * $bar_width + $bar_padding;

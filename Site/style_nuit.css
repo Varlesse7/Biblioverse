@@ -205,6 +205,12 @@ select:active{
     height: 50px;
 }
 
+svg{
+    display: flex;
+    width: 50%;
+    justify-self: center;
+}
+
 input[type="checkbox"] {
     appearance: none;
     background-color: #fff;
