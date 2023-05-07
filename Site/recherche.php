@@ -40,12 +40,11 @@ require("include/function.php");
 
         </div>
         <?php
-        $form = '<form method="get" action = "recherche.php">';
+        $form = '<form class="form" method="get" action = "recherche.php">';
         $form .= '<input type="hidden" name="page_count" value ="' . $array[1] . '" />';
         for ($i = 0; $i < $array[1]; $i++) {
-            $form .= "<label>";
             $form .= '<input class="submit" type="submit" name="page" value ="' . ($i + 1) . '" />';
-            $form .= "</label>";
+
         }
         $form .= '</form>';
         echo($form);

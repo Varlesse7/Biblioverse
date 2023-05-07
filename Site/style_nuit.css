@@ -12,10 +12,6 @@ a:hover{
     color: white    ;
 }
 
-main{
-    background-color: #FFB56A;
-
-}
 
 body{
     min-height: 100vh;
@@ -50,8 +46,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-	padding: 1%;
 }
+
 
 p {
     text-align: justify;
@@ -116,8 +112,6 @@ strong{
 .submit {
     border: none;
     text-align: center;
-    cursor: pointer;
-    outline: none;
     color: #FFB56A;
     background: none;
     margin: 0 auto;
@@ -129,15 +123,22 @@ strong{
 }
 
 input.submit{
-    margin-right: 18%;
     margin-top: 3% ;
     margin-bottom: 3% ;
     font-size: x-large;
 }
+
+form.form{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
 select {
     width: 120px;
     height: 30px;
-    border: 1px solid #999;
+    border: 2px solid #FFB56A;
     background: none;
     color: #FFB56A;
     border-radius: 5px;
@@ -148,6 +149,8 @@ select {
 }
 
 .search{
+    outline: none;
+
     height: 25px;
     border: 2px solid #FFB56A;
     background: none;
@@ -155,14 +158,23 @@ select {
     border-radius: 5px;
 }
 
+.search:focus{
+    outline: none;
+}
+
+.search:hover{
+    height: 25px;
+    border: 2px solid #FFB56A;
+    background: none;
+    color: #FFB56A;
+    border-radius: 5px;
+}
+
+
 .end-header{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.end-header span{
-    padding: 0;
 }
 
 .information_book{
@@ -181,7 +193,6 @@ select {
 .orange_background{
     background-color: #FFB56A;
     color: black ;
-    width: 100vw;
 }
 
 .seach-bar{
@@ -200,9 +211,9 @@ select {
     grid-template-rows: 1fr 1fr 1fr;
 
 }
-.bers {
-  font-family: "Baskerville", serif;
-
+img.index{
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .svg-flexible {
   width: 100%;

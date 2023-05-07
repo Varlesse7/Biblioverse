@@ -3,16 +3,13 @@
     font-family: Georgia, Serif;
 }
 
-main {
-    background-color: #FFFFFF;
-    color: #222222;
-}
 a {
     text-decoration: none;
-    color: #222222;
+    color: #532646;
 }
-a:hover {
-    color: #006699;
+
+a:hover{
+    color: #BB5BA0;
 }
 
 
@@ -22,23 +19,20 @@ body{
     grid-template-rows: min-content 1fr min-content;
 }
 
-button{
-    border: 1px outset black;
-}
+
 
 div span {
     margin-bottom: 3%;
 }
 
 footer {
-    background-color: #99C2FF;
-    color: #222222;
+    background-color: #FFC3A5;
+    color: #532646;
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 1%;
 }
-
 
 
 h1{
@@ -47,12 +41,11 @@ h1{
 }
 
 header {
-    background-color: #99C2FF;
-    color: #222222;
+    background-color: #FFC3A5;
+    color : #532646;
     display: flex;
     justify-content: space-between;
     align-items: center;
-	padding: 1%;
 }
 
 
@@ -73,12 +66,19 @@ strong{
 }
 
 .black_background{
-    background-color: #E5E5E5;
-    color: #222222 ;
-    width: 100vw;
+    background-color: #DBCDC6;
+    color: #532646;
 
 }
+.author-container {
+    display: flex;
+    padding-left: 4%;
+    padding-bottom: 3%;
+    width: 145px;
+    height: 208px;
 
+
+}
 .book-container {
     display: flex;
 }
@@ -106,46 +106,119 @@ strong{
 .container {
     display: grid;
     grid-template-columns: 1fr  1fr;
+
 }
 
 .submit {
     border: none;
     text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    outline: none;
-    color: #FFB56A;
+    color: #532646;
     background: none;
     margin: 0 auto;
 
 }
 
+.style {
+    margin-right: 10px;
+}
+
 input.submit{
-    margin-right: 18%;
-    padding: 0;
+    margin-top: 3% ;
+    margin-bottom: 3% ;
     font-size: x-large;
 }
+
+form.form{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
 select {
     width: 120px;
     height: 30px;
-    border: 1px solid #999;
+    border: 2px solid #532646;
     background: none;
-    color: #FFB56A;
+    color: #532646;
     border-radius: 5px;
 }
 .submit:hover{
-    color: white;
+    color: #BB5BA0;
 
 }
+
+.search{
+    height: 25px;
+    border: 2px solid #532646;
+    background: none;
+    color: #532646;
+    border-radius: 5px;
+}
+
+.search:hover{
+    height: 25px;
+    border: 2px solid #BB5BA0;
+    background: none;
+    color: #BB5BA0;
+    border-radius: 5px;
+}
+:root {
+    --form-control-color:#BB5BA0;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+
+
+    place-content: center;
+}
+
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+.search:focus{
+    outline: none;
+    height: 25px;
+    border: 2px solid #BB5BA0;
+    background: none;
+    color: #532646;
+    border-radius: 5px;
+}
+
 
 .end-header{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.end-header span{
-    padding: 0;
 }
 
 .information_book{
@@ -162,15 +235,15 @@ select {
 
 
 .orange_background{
-    background-color: #FFFFFF;
-    color: #222222 ;
-    width: 100vw;
+    background-color: #532646;
+    color: #DBCDC6 ;
 }
 
 .seach-bar{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .spacing{
@@ -180,29 +253,18 @@ select {
 }
 .solo_book_container{
     display: grid;
-    /*grid-template-rows: 1fr 1fr 1fr;*/
+    grid-template-rows: 1fr 1fr 1fr;
 
 }
-.slick-slide {
-  height: 300px;
-}
-.bers {
-  font-family: "Baskerville", serif;
-}
-
-.slick-prev,
-.slick-next {
-    background-color: black;
-    color: #FFB56A;
+img.index{
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .svg-flexible {
-  width: 100%;
-  height: 50vh;
+    width: 100%;
+    height: 50vh;
 }
 .span-profil {
-  font-size: 1.5em;
-  font-family: "Baskerville", serif;
+    font-size: 1.5em;
+    font-family: "Baskerville", serif;
 }
-
-
-

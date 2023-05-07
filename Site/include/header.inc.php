@@ -38,16 +38,16 @@
     $genre = isset($_SESSION['genre']) ? $_SESSION['genre'] : '';
     ?>
 
-    <div class="seach-bar">
-        <form method="GET" action="recherche.php">
-            <label>
-                Auteur
-                <input type="checkbox" name="autheur" value="autheur" <?php
-                if (isset($_GET['autheur'])) {
-                    echo($_GET['search']);
-                } ?>>
-            </label>
 
+    <form method="GET" action="recherche.php">
+        <label class="checkbox">
+            Auteur
+            <input type="checkbox" name="autheur" value="autheur" <?php
+            if (isset($_GET['autheur'])) {
+                echo($_GET['search']);
+            } ?>>
+        </label>
+        <div class="seach-bar">
             <label for="search">
                 <input class="search" type="text" name="search" id="search"
                        placeholder="Recherche" value="<?php
@@ -56,27 +56,72 @@
                 } ?>">
             </label>
             <label for="genre"></label>
-			<select name="genre" id="genre">
-				<option value="all">Tous les genres</option>
-				<option value="art" <?php if ($genre == 'art') { echo 'selected'; } ?>>Art</option>
-				<option value="biography" <?php if ($genre == 'biography') { echo 'selected'; } ?>>Biographie</option>
-				<option value="comics" <?php if ($genre == 'comics') { echo 'selected'; } ?>>BD</option>
-				<option value="computers" <?php if ($genre == 'computers') { echo 'selected'; } ?>>Informatique</option>
-				<option value="cooking" <?php if ($genre == 'cooking') { echo 'selected'; } ?>>Cuisine</option>
-				<option value="education" <?php if ($genre == 'education') { echo 'selected'; } ?>>Éducation</option>
-				<option value="fiction" <?php if ($genre == 'fiction') { echo 'selected'; } ?>>Fiction</option>
-				<option value="history" <?php if ($genre == 'history') { echo 'selected'; } ?>>Histoire</option>
-				<option value="medical" <?php if ($genre == 'medical') { echo 'selected'; } ?>>Médecine</option>
-				<option value="music" <?php if ($genre == 'music') { echo 'selected'; } ?>>Musique</option>
-				<option value="nature" <?php if ($genre == 'nature') { echo 'selected'; } ?>>Nature</option>
-				<option value="poetry" <?php if ($genre == 'poetry') { echo 'selected'; } ?>>Poésie</option>
-				<option value="religion" <?php if ($genre == 'religion') { echo 'selected'; } ?>>Religion</option>
-				<option value="science" <?php if ($genre == 'science') { echo 'selected'; } ?>>Science</option>
-				<option value="travel" <?php if ($genre == 'travel') { echo 'selected'; } ?>>Voyages</option>
-			</select>
+            <select name="genre" id="genre">
+                <option value="all">Tous les genres</option>
+                <option value="art" <?php if ($genre == 'art') {
+                    echo 'selected';
+                } ?>>Art
+                </option>
+                <option value="biography" <?php if ($genre == 'biography') {
+                    echo 'selected';
+                } ?>>Biographie
+                </option>
+                <option value="comics" <?php if ($genre == 'comics') {
+                    echo 'selected';
+                } ?>>BD
+                </option>
+                <option value="computers" <?php if ($genre == 'computers') {
+                    echo 'selected';
+                } ?>>Informatique
+                </option>
+                <option value="cooking" <?php if ($genre == 'cooking') {
+                    echo 'selected';
+                } ?>>Cuisine
+                </option>
+                <option value="education" <?php if ($genre == 'education') {
+                    echo 'selected';
+                } ?>>Éducation
+                </option>
+                <option value="fiction" <?php if ($genre == 'fiction') {
+                    echo 'selected';
+                } ?>>Fiction
+                </option>
+                <option value="history" <?php if ($genre == 'history') {
+                    echo 'selected';
+                } ?>>Histoire
+                </option>
+                <option value="medical" <?php if ($genre == 'medical') {
+                    echo 'selected';
+                } ?>>Médecine
+                </option>
+                <option value="music" <?php if ($genre == 'music') {
+                    echo 'selected';
+                } ?>>Musique
+                </option>
+                <option value="nature" <?php if ($genre == 'nature') {
+                    echo 'selected';
+                } ?>>Nature
+                </option>
+                <option value="poetry" <?php if ($genre == 'poetry') {
+                    echo 'selected';
+                } ?>>Poésie
+                </option>
+                <option value="religion" <?php if ($genre == 'religion') {
+                    echo 'selected';
+                } ?>>Religion
+                </option>
+                <option value="science" <?php if ($genre == 'science') {
+                    echo 'selected';
+                } ?>>Science
+                </option>
+                <option value="travel" <?php if ($genre == 'travel') {
+                    echo 'selected';
+                } ?>>Voyages
+                </option>
+            </select>
 
             <button class="submit" type="submit">Rechercher</button>
-        </form>
+    </form>
 
 
     </div>
@@ -122,7 +167,7 @@
         }
         echo($a);
         ?>
-        <a href="index.php"><img src="./images/petit_Icon.png" alt=""></a>
+        <a class="icon" href="index.php"><img src="./images/petit_Icon.png" alt="icon"/></a>
     </div>
 </header>
 

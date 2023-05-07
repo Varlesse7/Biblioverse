@@ -9,7 +9,6 @@ require("include/header.inc.php");
 require("include/function.php");
 ?>
 <main>
-	
     <section class="black_background">
         <div class='spacing'>
             <h1>Notre séléction de livre </h1>
@@ -54,7 +53,6 @@ require("include/function.php");
                         <span>Programmation HTML5 avec CSS3 Pour les Nuls</span>
                         <span>Chris MINNICK, Ed TITTEL</span>
                         <span><strong>Avis le plus aimé :</strong>
-
                             Ce livre est une excellente ressource pour les débutants en programmation web qui cherchent à apprendre HTML5 et CSS3. Les auteurs expliquent clairement les concepts de base et fournissent de nombreux exemples pratiques pour aider les lecteurs à comprendre comment créer des pages web avec HTML et CSS. </span>
                     </div>
 					

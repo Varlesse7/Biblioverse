@@ -7,10 +7,10 @@ require("include/header.inc.php");
 require("include/function.php");
 
 ?>
-<main>
+<main class="black_background">
 
 
-    <section class="black_background">
+    <section>
 	<?php
 		$style_actuel = '';
 		if (isset($_GET['style'])) {
