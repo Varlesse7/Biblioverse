@@ -40,7 +40,7 @@ require("include/function.php");
             echo($book[1]);
             echo("</div>");
 
-            echo("</<section>");
+            echo("</section>");
             ?>
 
 

@@ -34,7 +34,7 @@
         <div class="seach-bar">
             <label for="search">
                 <input class="search" type="text" name="search" id="search"
-                       placeholder="Recherche" value="Le Crime de l'Orient-Express"/>
+                       placeholder="Recherche" value=""/>
             </label>
             <label for="genre"></label>
             <select name="genre" id="genre">
@@ -78,164 +78,26 @@
 
 
     <div class="end-header">
-        <a class ="style" href="recherche.php?style=jour%26search%3DLe+Crime+de+l%27Orient-Express%26genre%3Dall">Mode jour</a>        <a class="icon" href="index.php"><img src="./images/petit_Icon.png" alt="icon"/></a>
+        <a class ="style" href="book.php?style=jour%26isbn%3D9782702437100">Mode jour</a>        <a class="icon" href="index.php"><img src="./images/petit_Icon.png" alt="icon"/></a>
     </div>
 </header>
 
-<main>
-
+<main class="black_background">
     <section class="black_background">
-        <a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line-nuit.svg" alt="fleche"/></a>
-
         <div class='spacing'>
-            <h1>Résultat(s) de la recherche:</h1>
-            <br />
-<b>Warning</b>:  file_get_contents(https://www.googleapis.com/books/v1/volumes?q=Le+Crime+de+l%27Orient-Express&amp;max_results=20&amp;startIndex=0&amp;key=AIzaSyCs1ePjCy_8Wkd1UrWYho8PHIfTEOU754E): Failed to open stream: HTTP request failed! HTTP/1.1 429 Too Many Requests
- in <b>/home/massyl-oy/www/include/function.php</b> on line <b>39</b><br />
-			<div class="container">
+            <a href="#" onclick="history.back()"><img class="fleche" src="images/arrow-go-back-line-nuit.svg" alt="fleche"/></a>
+
+            					<h1>Le crime de l'Orient-Express (Nouvelle traduction révisée)</h1>
 				<div class="book-container">
-				<a href='book.php?isbn=OCLC:421662660'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express</strong>
+				<img src='http://books.google.com/books/content?id=DmemAL44SRUC&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api'/>
+				<div class='solo_book_container'>
 					<span>Auteur: Agatha Christie</span>
+					<span>Description: C’est par le plus grand des hasards qu’Hercule Poirot se trouve à bord de l’Orient-Express, ce train de luxe qui traverse l’Europe. Alors qu’il est bloqué par la neige au cœur de la Yougoslavie, on découvre, dans l’une des voitures, le corps d’un Américain sauvagement assassiné à coups de couteau. Le meurtrier se cache forcément parmi les voyageurs... Mais qui de la princesse russe, de l’Américaine fantasque, de ce couple de Hongrois distingués, de ce colonel de retour des Indes ou même du propre secrétaire de la victime a bien pu commettre pareil crime ? L’enquête commence, elle sera l’une des plus difficiles et des plus délicates pour notre célèbre détective belge. Traduit de l’anglais par Jean-Marc Mendel</span>
 				</div>
 			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=288890876X'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Hercule Poirot</strong>
-					<span>Auteur: </span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=9782702437100'><img src='http://books.google.com/books/content?id=DmemAL44SRUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express (Nouvelle traduction révisée)</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=9782511025864'><img src='http://books.google.com/books/content?id=8LvPBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l’Orient-Express d'Agatha Christie (Fiche de lecture)</strong>
-					<span>Auteur: Vanessa Grosjean, fichesdelecture.com,</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2871531617'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>AGATHA CHRISTIE N°1 : LE CRIME DE L'ORIENT-EXPRESS</strong>
-					<span>Auteur: François Rivière, Jean-François Miniac</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=9782889521005'><img src='http://books.google.com/books/content?id=uiSFDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Hercule Poirot</strong>
-					<span>Auteur: Chaiko, Benjamin Von Eckartsberg</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:918024328'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de L'Orient-Express</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2258071313'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express</strong>
-					<span>Auteur: Marc Lemonier</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2724202716'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l'Orient-express</strong>
-					<span>Auteur: Agatha Christie, Louis Postif</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2830219015'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express ; Mort sur le Nil</strong>
-					<span>Auteur: Agatha Christie, Louis Postif</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:637582285'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Les indiscrétions d'Hercule Poirot</strong>
-					<span>Auteur: Agatha Christie (Femme de lettres)</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:459262663'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l'Orient-Express (Murder on the Orient-Express), par Agatha Christie. Texte français de Louis Postif</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:897660580'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express</strong>
-					<span>Auteur: </span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2298136114'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:762622051'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l'Orient-Express</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=2848102918'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l'Orient-Express</strong>
-					<span>Auteur: François Rivière, Solidor</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:559055415'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le Crime de l'Orient Express ... Texte français de Louis Postif</strong>
-					<span>Auteur: Agatha Christie, Louis Postif</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=229805729X'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Le crime de l'Orient-Express ; Drame en trois actes</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=OCLC:459730841'><img src='images/placeholder.png' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Oeuvres choisies</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-				<div class="book-container">
-				<a href='book.php?isbn=9782702436776'><img src='http://books.google.com/books/content?id=TS3j8ZTpaG0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' alt='book'/></a>
-				<div class='information_book'>
-					<strong>Ils étaient dix</strong>
-					<span>Auteur: Agatha Christie</span>
-				</div>
-			</div>
-</div>
-        </div>
-        <form class="form" method="get" action = "recherche.php"><input type="hidden" name="page_count" value ="0" /></form>    </section>
+</div></section><section class='orange_background'><div class='spacing'><h2>Autres titres de l'auteur / Autres titres du meme genre:</h2><div class='container'>
+<div class='book-container'><a href='book.php?isbn=9782702438879'><img src='http://books.google.com/books/content?id=RMAtrun06O4C&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api'/></a><div class='information_book'><strong>Christmas Pudding (Nouvelle traduction révisée)</strong></div></div><div class='book-container'><a href=''><img src='images/placeholder.png'/></a><div class='information_book'><strong>Némésis</strong></div></div><div class='book-container'><a href='book.php?isbn=9782702445082'><img src='http://books.google.com/books/content?id=XElJCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;source=gbs_api'/></a><div class='information_book'><strong>Un deux trois (Nouvelle traduction révisée)</strong></div></div><div class='book-container'><a href='book.php?isbn=9782702445136'><img src='http://books.google.com/books/content?id=xVI0CgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api'/></a><div class='information_book'><strong>Miss Marple au club du mardi (Nouvelle traduction révisée)</strong></div></div></div></div></section>
+
 </main>
 
 

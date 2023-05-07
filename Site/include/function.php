@@ -107,7 +107,7 @@ function search_google(): array
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
         if ($thumbnail) {
-            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . $thumbnail . "' alt='book'/></a>" . "\n";
+            $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . htmlspecialchars($thumbnail) . "' alt='book'/></a>" . "\n";
         } else {
 
             $book .= "\t\t\t\t" . "<a href='" . "book.php?isbn=" . $isbn . "'><img src='" . "images/placeholder.png" . "' alt='book'/></a>" . "\n";
@@ -172,7 +172,7 @@ function book($isbn)
 
                 $other_books .= "<div class='book-container'>";
                 if ($other_thumbnail) {
-                    $other_books .= "<a href='" . $book_link . "'>" . "<img src='$other_thumbnail'/>" . "</a>";
+                    $other_books .= "<a href='" . $book_link . "'>" . "<img src='".htmlspecialchars($other_thumbnail)."'/>" . "</a>";
                 }else {
                     $other_books .= "<a href='" . $book_link . "'>" . "<img src='images/placeholder.png'/>" . "</a>";
                 }
@@ -197,7 +197,7 @@ function book($isbn)
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . $thumbnail . "'>" . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . htmlspecialchars($thumbnail) . "'/>" . "\n";
 
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
@@ -210,7 +210,7 @@ function book($isbn)
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
         $book .= "\t\t\t\t" . '<div class="book-container">' . "\n";
-        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'>" . "\n";
+        $book .= "\t\t\t\t" . "<img src='" . "images/placeholder.png" . "'/>" . "\n";
 
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
