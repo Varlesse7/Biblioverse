@@ -38,7 +38,7 @@ require("include/function.php");
 				<li><a href="profil.php">Profil utilisateur</a></li>
 				<li><a href="stats.php">Stats du Site</a></li>
 				<li><a href="tech.php">Tech</a></li>
-				<li><a href="#">Page 5</a></li>
+				<li><a href="./html/globals_func.html">Documentation des fonctions crées</a></li>
 			  </ul>
 			</div>
 
