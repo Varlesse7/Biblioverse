@@ -29,7 +29,10 @@ require("include/function.php");
 	?>
         <div class='spacing'>
             <?php
-            echo (book($_GET['isbn']));
+            $book= book($_GET['isbn']);
+            echo ($book[0]);
+            echo ("<h3>Autres titres de l'auteur / Autres titres du meme genre:</h3>");
+            echo ($book[1]);
             ?>
         </div>
     </section>
