@@ -106,6 +106,35 @@ strong{
 .container {
     display: grid;
     grid-template-columns: 1fr  1fr;
+}
+
+.submit {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    color: #FFB56A;
+    background: none;
+    margin: 0 auto;
+
+}
+
+input.submit{
+    margin-right: 18%;
+    padding: 0;
+    font-size: x-large;
+}
+select {
+    width: 120px;
+    height: 30px;
+    border: 1px solid #999;
+    background: none;
+    color: #FFB56A;
+    border-radius: 5px;
+}
+.submit:hover{
+    color: white;
 
 }
 

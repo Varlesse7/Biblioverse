@@ -20,9 +20,9 @@ require("include/function.php");
             $style_actuel = 'style_nuit.css';
         }
         if ($style_actuel == 'style_jour.css') {
-            echo '<a href="#" onclick="history.back()"><img src="images/arrow-go-back-line.svg" width="100" height="100" alt=""></a>';
+            echo '<a href="#" onclick="history.back()"><img src="images/arrow-go-back-line.svg" width="50" height="50"></a>';
         } elseif ($style_actuel == 'style_nuit.css') {
-            echo '<a href="#" onclick="history.back()"><img src="images/arrow-go-back-line-nuit.svg" width="100" height="100" alt=""></a>';
+            echo '<a href="#" onclick="history.back()"><img src="images/arrow-go-back-line-nuit.svg" width="50" height="50"></a>';
         }
         ?>
 
