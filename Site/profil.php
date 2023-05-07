@@ -38,7 +38,7 @@ require("include/function.php");
 			<br>
 			<div class="container slider">
                 <div class="book-container">
-					<a href="book.php?isbn=2070212009"><img src="images/l'Etranger.jpg"/></a>
+					<a href="book.php?isbn=2070212009"><img src="images/l'Etranger.jpg" alt=""/></a>
       
                     <div>
 
@@ -51,7 +51,7 @@ require("include/function.php");
                 </div>
                 <div class="book-container">
 				
-					<a href="book.php?isbn=2702436331"><img src="images/L'orient-Express.jpg"/></a>
+					<a href="book.php?isbn=2702436331"><img src="images/L'orient-Express.jpg" alt=""/></a>
                     <div>
                         <span>L'orient-Express</span>
                         <span>Agatha Christie</span>
@@ -62,7 +62,7 @@ require("include/function.php");
 					
                 </div>
 				<div class="book-container">
-					<a href="book.php?isbn=9781781101049"><img src="images/harryp.jpg"/></a>
+					<a href="book.php?isbn=9781781101049"><img src="images/harryp.jpg" alt=""/></a>
                     <div>
                         <span>Harry Potter et la Chambre des Secrets</span>
                         <span>J.K. Rowling</span>
@@ -72,7 +72,7 @@ require("include/function.php");
                     </div>
                 </div>
 				<div class="book-container">
-					<a href="book.php?isbn=9782754056861"><img src="images/progprnull.jpg"/></a>
+					<a href="book.php?isbn=9782754056861"><img src="images/progprnull.jpg" alt=""/></a>
                     <div>
                         <span>Programmation HTML5 avec CSS3 Pour les Nuls</span>
                         <span>Chris MINNICK, Ed TITTEL</span>

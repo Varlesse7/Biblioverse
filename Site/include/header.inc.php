@@ -123,13 +123,6 @@
             <button class="submit" type="submit">Rechercher</button>
         </form>
 
-        <?php
-        /*
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $filter = $_POST['filter'];
-        }
-        */
-        ?>
 
     </div>
     <div class="end-header">
@@ -174,7 +167,7 @@
         }
         echo($a);
         ?>
-        <a href="index.php"><img src="./images/petit_Icon.png"></a>
+        <a href="index.php"><img src="./images/petit_Icon.png" alt=""></a>
     </div>
 </header>
 

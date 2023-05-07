@@ -192,22 +192,6 @@ function book($isbn)
     $title = $item['volumeInfo']['title'] ?? '';
     $authors = $item['volumeInfo']['authors']['0'] ?? '';
     $description = $item['volumeInfo']['description'] ?? '';
-    $bio = "";
-    $author_image = "";
-
-    if (!empty($authors)) {
-        $author = urlencode($authors);
-        $url = "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageimages&titles=$author&exintro=true&explaintext=true&exsentences=5&pithumbsize=200";
-        $result = file_get_contents($url);
-        $result = json_decode($result, true);
-
-        $pages = $result['query']['pages'];
-        foreach ($pages as $page) {
-            $bio .= $page['extract'];
-            $author_image = $page['thumbnail']['source'] ?? '';
-        }
-    }
-
     if ($thumbnail) {
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
 
@@ -217,12 +201,10 @@ function book($isbn)
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span>" . "\n";
-		$book .= "\t\t\t\t\t" . "<center><span>Image de l'Autheur(Si le nom est complet):</span></center>" . "\n";
-        $book .= "\t\t\t\t\t" . "<center><img src='" . $author_image . "' alt=''></center>" . "\n";
 
         $book .= "\t\t\t\t" . "</div>" . "\n";
         $book .= "\t\t\t" . "</div>" . "\n";
+
 
     } else {
         $book = "\t\t\t\t\t" . "<h1>" . $title . "</h1>" . "\n";
@@ -233,18 +215,17 @@ function book($isbn)
         $book .= "\t\t\t\t" . "<div class='solo_book_container'>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Auteur: " . $authors . "</span>" . "\n";
         $book .= "\t\t\t\t\t" . "<span>Description: " . $description . "</span>" . "\n";
-        $book .= "\t\t\t\t\t" . "<span>Biographie (Si le nom est complet uniquement et sans points): " . $bio . "</span><br><br>" . "\n";
-		$book .= "\t\t\t\t\t" . "<img src='" . $author_image . "' alt='Photo Autheur'>" . "\n";
-		if (empty($author_image)) {
-			$book .= "\t\t\t\t\t" . "<img src='" . "images/placeholder.png" . "' alt=''>" . "\n";
-		}
 
-		$book .= "\t\t\t\t" . "</div>" . "\n";
-		$book .= "\t\t\t" . "</div>" . "\n";
-		}
-		return $book;
-}
-			
+        $book .= "\t\t\t\t" . "</div>" . "\n";
+        $book .= "\t\t\t" . "</div>" . "\n";
+
+
+    }
+
+
+    return $book;
+
+}	
 
 
 function save_5_derniers() {
@@ -315,8 +296,8 @@ function afficher_stats() {
 
     echo '<div style="display:flex; justify-content:center;">';
     echo "<table style='border-collapse: collapse;'>";
-	echo "<caption>TOP 3 des recherches sur Biblioverse</caption>";
-    echo "<thead><tr><th style='border:1px solid black; padding:5px;'>Recherche</th><th style='border:1px solid black; padding:5px;'>Nombre de fois</th></tr></thead>";
+	echo "<caption>TOP 3 des livres consultés sur Biblioverse</caption>";
+    echo "<thead><tr><th style='border:1px solid black; padding:5px;'>Nom du Livre</th><th style='border:1px solid black; padding:5px;'>Nombre de fois</th></tr></thead>";
     echo "<tbody>";
     foreach($top_searches as $search_term => $count){
         echo "<tr style='border:1px solid black;'><td style='border:1px solid black; padding:5px;'>$search_term</td><td style='border:1px solid black; padding:5px;'>$count</td></tr>";
@@ -385,7 +366,8 @@ function afficher_svg() {
     $max_value = max($values);
     $base_width = 1000;
     $base_height = 600;
-    $margin_top = 50;
+    $margin_top = 70;
+
     $svg_width = $base_width;
     $svg_height = $base_height - $margin_top;
 
