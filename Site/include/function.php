@@ -162,7 +162,8 @@ function book($isbn)
             if (isset($item['volumeInfo']['industryIdentifiers'][0]['identifier'])) {
                 $other_isbn = $item['volumeInfo']['industryIdentifiers'][0]['identifier'];
                 $other_title = $item['volumeInfo']['title'];
-                $other_thulbnail = $item['volumeInfo']['imageLinks']['thumbnail'];
+
+                $other_thumbnail = $item['volumeInfo']['imageLinks']['thumbnail']?? '';
 
                 if (preg_match('/^(97(8|9))?\d{9}(\d|X)$/', $other_isbn)) {
                     $book_link = "book.php?isbn=" . $other_isbn;
@@ -171,8 +172,13 @@ function book($isbn)
                 }
 
                 $other_books .= "<div class='book-container'>";
-                $other_books .= "<a href='" . $book_link . "'>" ."<img src='$other_thulbnail'/>". "</a>";
+                if ($other_thumbnail) {
+                    $other_books .= "<a href='" . $book_link . "'>" . "<img src='$other_thumbnail'/>" . "</a>";
+                }else {
+                    $other_books .= "<a href='" . $book_link . "'>" . "<img src='images/placeholder.png'/>" . "</a>";
+                }
                 $other_books .= "<div class='information_book'>";
+
                 $other_books .=  "<strong>".$other_title ."</strong>";
                 $other_books .= "</div>";
                 $other_books .= "</div>";
